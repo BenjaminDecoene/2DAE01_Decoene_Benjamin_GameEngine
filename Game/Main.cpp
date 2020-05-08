@@ -5,11 +5,11 @@
 //#include <vld.h>
 //#endif
 //
-#include "SDL.h"
-#include "Minigin.h"
+//#include "SDL.h"
+//#include "Minigin.h"
 
 int main(int, char*[]) {
-	dae::Minigin engine;
-	engine.Run();
-    return 0;
+	//dae::Minigin engine;
+	//engine.Run();
+ //   return 0;
 }

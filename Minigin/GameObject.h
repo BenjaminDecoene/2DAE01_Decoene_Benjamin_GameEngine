@@ -1,7 +1,7 @@
 #pragma once
 #include "Transform.h"
 #include "SceneObject.h"
-#include "ObjectComponent.h"
+#include "Component.h"
 
 namespace dae
 {
@@ -11,8 +11,21 @@ namespace dae
 		void Update() override;
 		void Render() const override;
 
-		void AddComponent(ObjectComponent* component);
+		void AddComponent(Component* component);
+		template<typename T>
+		inline T GetComponent()
+		{
+			for(Component* i : m_pComponents)
+			{
+				if(static_cast<T>(i) != nullptr)
+				{
+					return static_cast<T>(i);
+				}
+			}
+			return nullptr;
+		}
 		void SetPosition(float x, float y);
+		Transform GetTransform() const { return m_Transform; }
 
 		GameObject() = default;
 		virtual ~GameObject();
@@ -23,6 +36,6 @@ namespace dae
 
 	private:
 		Transform m_Transform;
-		std::vector<ObjectComponent*> m_pComponents;
+		std::vector<Component*> m_pComponents;
 	};
 }

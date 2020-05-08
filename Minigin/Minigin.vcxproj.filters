@@ -66,9 +66,6 @@
     <ClInclude Include="Transform.h">
       <Filter>Header Files\Minigin</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectComponent.h">
-      <Filter>Header Files\BetaEngine\Components</Filter>
-    </ClInclude>
     <ClInclude Include="TextureComponent2D.h">
       <Filter>Header Files\BetaEngine\Components</Filter>
     </ClInclude>
@@ -83,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Header Files\BetaEngine\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Header Files\BetaEngine\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +122,6 @@
     <ClCompile Include="Transform.cpp">
       <Filter>Header Files\Minigin</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectComponent.cpp">
-      <Filter>Header Files\BetaEngine\Components</Filter>
-    </ClCompile>
     <ClCompile Include="TextureComponent2D.cpp">
       <Filter>Header Files\BetaEngine\Components</Filter>
     </ClCompile>
@@ -133,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Header Files\BetaEngine\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Header Files\BetaEngine\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
