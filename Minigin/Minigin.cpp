@@ -92,17 +92,35 @@ void dae::Minigin::Run()
 		auto& time = Time::GetInstance();
 
 		bool doContinue = true;
+
+		high_resolution_clock::time_point previous{};
+		duration<double> lag{};
+
+		//	Gameloop
 		while (doContinue)
 		{
-			const auto currentTime = high_resolution_clock::now();
+			//	update frames, lag
+			high_resolution_clock::time_point currentTime = high_resolution_clock::now();
+			const duration<double> elapsed = duration_cast<milliseconds>(currentTime - previous);
+			previous = currentTime;
+			lag += elapsed;
+
+			//	process input
+
+			//	if frame takes to long, update till up to date before rendering
+			while(lag.count() >= MsPerFrame)
+			{
+				//	update
+				sceneManager.Update();
+				time.Update(float(elapsed.count()));
+				lag -= milliseconds(MsPerFrame);
+			}
 			
-			//doContinue = input.ProcessInput();
-			sceneManager.Update();
-			renderer.Render();
-			
-			auto sleepTime = duration_cast<duration<float>>(currentTime + milliseconds(MsPerFrame) - high_resolution_clock::now());
-			this_thread::sleep_for(sleepTime);
-			time.Update(sleepTime.count());
+			//	render
+			//	updating does require some time so frames will not be rendered at the time of updating.
+			//	by giving an interpolation value(normalized)i can calculate where
+			//	something should be drawn based on it current velocity.
+			renderer.Render(lag.count() / MsPerFrame);
 
 			if(Time::GetInstance().GetIsNewSecond())
 			{
