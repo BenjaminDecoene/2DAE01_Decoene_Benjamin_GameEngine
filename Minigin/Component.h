@@ -8,6 +8,6 @@ namespace dae {
 class Component
 {
 public:
-	virtual ~Component();
+	virtual ~Component() = 0;
 	virtual void Update(dae::GameObject* parent) = 0;
 };

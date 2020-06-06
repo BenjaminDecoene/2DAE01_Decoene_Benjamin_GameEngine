@@ -1,9 +1,10 @@
 #pragma once
-#include "TextObject.h"
+
 struct SDL_Window;
 namespace dae
 {
 	class Scene;
+	class TextObject;
 
 	class Minigin
 	{
@@ -17,6 +18,6 @@ namespace dae
 		SDL_Window* m_Window{};
 
 		void UpdateFpsCounter() const;
-		std::shared_ptr<TextObject> m_Fps;
+		TextObject* m_Fps;
 	};
 }

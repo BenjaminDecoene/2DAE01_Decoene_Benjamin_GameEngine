@@ -5,11 +5,10 @@
 
 namespace dae
 {
-	class GameObject final: public SceneObject
+	class GameObject : public SceneObject
 	{
 	public:
 		void Update() override;
-		void Render() const override;
 
 		void AddComponent(Component* component);
 		template<typename T>
@@ -27,7 +26,6 @@ namespace dae
 		void SetPosition(float x, float y);
 		Transform GetTransform() const { return m_Transform; }
 
-		GameObject() = default;
 		virtual ~GameObject();
 		GameObject(const GameObject& other) = delete;
 		GameObject(GameObject&& other) = delete;

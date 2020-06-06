@@ -20,7 +20,7 @@ void dae::SceneManager::Render()
 
 dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
 {
-	const auto scene = std::shared_ptr<Scene>(new Scene(name));
+	const auto scene = new Scene(name);
 	m_Scenes.push_back(scene);
 	return *scene;
 }
@@ -29,9 +29,9 @@ dae::Scene& dae::SceneManager::GetScene(const std::string& name)
 {
 	for(size_t i{}; i < m_Scenes.size(); i++)
 	{
-		if(m_Scenes[i].get()->GetName() == name)
+		if(m_Scenes[i]->GetName() == name)
 		{
-			return *m_Scenes[i].get();
+			return *m_Scenes[i];
 		}
 	}
 	return CreateScene(name);
