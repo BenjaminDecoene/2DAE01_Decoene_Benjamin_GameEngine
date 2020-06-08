@@ -5,10 +5,11 @@
 class TextureComponent2D final: public Component
 {
 public:
-	TextureComponent2D(const std::string& file);
+	explicit TextureComponent2D(dae::Object* parent, const std::string& file);
+	~TextureComponent2D() override = default;
 	
-	void Update(dae::GameObject* parent) override;
-	void Render(dae::GameObject* parent) const;
+	void Update() override;
+	void Render() const override;
 private:
 	std::shared_ptr<dae::Texture2D> m_pTexture;
 };

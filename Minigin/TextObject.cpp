@@ -1,4 +1,4 @@
-#include "MiniginPCH.h"
+#include "pch.h"
 #include <SDL.h>
 #include <SDL_ttf.h>
 

@@ -4,15 +4,16 @@
 class Time : public dae::Singleton<Time>
 {
 public:
-	void Update(float elapsedTime);
+	void SetMsPerFrame(int msPerFrame) { m_MsPerFrame = msPerFrame; }
+	void Update();
 
-	float GetElapsedTime() const { return m_ElapsedTime; }
 	float GetTotalTime() const { return m_TotalTime; }
-	float GetFps() const { return 1 / m_ElapsedTime; }
 	bool GetIsNewSecond() const { return m_IsNewSecond; }
-private:
 	
-	float m_ElapsedTime = 0;
+	int GetMsPerFrame() const { return m_MsPerFrame; }
+private:
+	int m_MsPerFrame = 0;
 	float m_TotalTime = 0;
-	int m_IsNewSecond = false;
+	bool m_IsNewSecond = false;
+	unsigned int m_LastSec = 0;
 };

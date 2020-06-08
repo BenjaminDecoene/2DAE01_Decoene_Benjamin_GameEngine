@@ -1,13 +1,16 @@
 #pragma once
-#include "Transform.h"
 
 namespace dae {
-	class GameObject;
+	class Object;
 }
 
 class Component
 {
 public:
-	virtual ~Component() = 0;
-	virtual void Update(dae::GameObject* parent) = 0;
+	explicit Component(dae::Object* parent) :m_pParent{parent}{};
+	virtual ~Component() = default;
+	virtual void Update() = 0;
+	virtual void Render() const = 0;
+protected:
+	dae::Object* m_pParent;
 };

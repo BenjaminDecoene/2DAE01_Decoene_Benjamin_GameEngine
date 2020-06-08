@@ -1,13 +1,16 @@
-#include "MiniginPCH.h"
+#include "pch.h"
 #include "Time.h"
 
-void Time::Update(float elapsedTime)
+void Time::Update()
 {
-	m_ElapsedTime = elapsedTime;
-	m_TotalTime += elapsedTime;
+	m_TotalTime += float(GameInfo::GetInstance().GetMsPerFrame() / 1000.f);
 
-	if(int(m_TotalTime - elapsedTime) < int(m_TotalTime))
+	//	check if a new second started
+	if(m_LastSec < unsigned int(m_TotalTime))
+	{
 		m_IsNewSecond = true;
+		m_LastSec = unsigned int(m_TotalTime);
+	}
 	else
 		m_IsNewSecond = false;
 }

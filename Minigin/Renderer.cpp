@@ -1,4 +1,4 @@
-#include "MiniginPCH.h"
+#include "pch.h"
 #include "Renderer.h"
 #include <SDL.h>
 #include "SceneManager.h"
@@ -16,7 +16,6 @@ void dae::Renderer::Init(SDL_Window * window)
 void dae::Renderer::Render() const
 {
 	SDL_RenderClear(m_Renderer);
-
 	SceneManager::GetInstance().Render();
 	
 	SDL_RenderPresent(m_Renderer);

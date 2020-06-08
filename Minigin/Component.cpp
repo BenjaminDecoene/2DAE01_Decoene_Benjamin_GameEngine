@@ -1,3 +1,3 @@
-#include "MiniginPCH.h"
+#include "pch.h"
 #include "Component.h"
 

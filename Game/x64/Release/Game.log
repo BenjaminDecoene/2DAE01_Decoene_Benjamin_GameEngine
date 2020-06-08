@@ -1,0 +1,10 @@
+﻿  BubbleBobble.cpp
+  Main.cpp
+  TestScene.cpp
+  Generating code
+  Previous IOBJ not found, fall back to full compilation.
+D:\school\2DAE\programming4\GameEngine_Git\Game\Main.cpp(12): error C2220: the following warning is treated as an error
+D:\school\2DAE\programming4\GameEngine_Git\Game\Main.cpp(12): warning C4702: unreachable code
+D:\school\2DAE\programming4\GameEngine_Git\Game\Main.cpp(13): warning C4702: unreachable code
+  All 467 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+LINK : fatal error LNK1257: code generation failed

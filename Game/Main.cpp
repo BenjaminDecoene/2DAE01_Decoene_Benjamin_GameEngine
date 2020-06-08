@@ -1,9 +1,14 @@
 #include "Minigin.h"
-#include "Box2D.h"
+#include "BubbleBobble.h"
 
 int main(int, char*[]) {
 	dae::Minigin engine;
+
+	const auto pGame = new BubbleBobble();
+
+	engine.Init();
 	engine.Run();
 	
+	delete pGame;
     return 0;
 }

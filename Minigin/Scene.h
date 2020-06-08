@@ -1,32 +1,29 @@
 #pragma once
-#include "SceneManager.h"
+#include <Box2D.h>
 
 namespace dae
 {
 	class SceneObject;
 	class Scene
 	{
-		friend Scene& SceneManager::CreateScene(const std::string& name);
 	public:
+		Scene(const std::string& name);
 		void Add(SceneObject* object);
 
 		void Update();
 		void Render() const;
 		std::string GetName() const { return m_Name; }
+		b2World* GetWorld() const { return m_World; }
 		
-		~Scene();
-		Scene(const Scene& other) = delete;
-		Scene(Scene&& other) = delete;
-		Scene& operator=(const Scene& other) = delete;
-		Scene& operator=(Scene&& other) = delete;
+		virtual ~Scene();
 
 	private: 
-		explicit Scene(const std::string& name);
-
 		std::string m_Name;
 		std::vector<SceneObject*> m_Objects{};
 
-		static unsigned int m_IdCounter; 
+		static unsigned int m_IdCounter;
+
+		b2World* m_World;
 	};
 
 }
