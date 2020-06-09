@@ -49,7 +49,7 @@ void dae::Renderer::RenderTexture(const Texture2D& texture, const float x, const
 	SDL_RenderCopy(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst);
 }
 
-void dae::Renderer::RenderTexture(const Texture2D& texture, const float x, const float y, const float width, const float height, const float angle) const
+void dae::Renderer::RenderTexture(const Texture2D& texture, float x, float y, float width, float height, float angle) const
 {
 	SDL_Rect dst;
 	dst.x = static_cast<int>(x);
@@ -57,4 +57,14 @@ void dae::Renderer::RenderTexture(const Texture2D& texture, const float x, const
 	dst.w = static_cast<int>(width);
 	dst.h = static_cast<int>(height);
 	SDL_RenderCopyEx(GetSDLRenderer(), texture.GetSDLTexture(), nullptr, &dst, double(angle), nullptr, SDL_FLIP_NONE);
+}
+
+void dae::Renderer::RenderTexture(const Texture2D& texture, const float x, const float y, const SDL_Rect& src, const float width, const float height, const float angle) const
+{
+	SDL_Rect dst;
+	dst.x = static_cast<int>(x);
+	dst.y = static_cast<int>(y);
+	dst.w = static_cast<int>(width);
+	dst.h = static_cast<int>(height);
+	SDL_RenderCopyEx(GetSDLRenderer(), texture.GetSDLTexture(), &src, &dst, double(angle), nullptr, SDL_FLIP_NONE);
 }

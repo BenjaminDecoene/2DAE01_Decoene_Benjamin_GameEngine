@@ -86,16 +86,16 @@
     <ClInclude Include="FPSclock.h">
       <Filter>Bengine\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="BoxColliderComponent.h">
-      <Filter>Bengine\Components</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectComponents.h">
       <Filter>Bengine\Components</Filter>
     </ClInclude>
     <ClInclude Include="PhysxManager.h">
       <Filter>Bengine</Filter>
     </ClInclude>
-    <ClInclude Include="RigidBodyComponent.h">
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Bengine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent2D.h">
       <Filter>Bengine\Components</Filter>
     </ClInclude>
   </ItemGroup>
@@ -151,16 +151,16 @@
     <ClCompile Include="FPSclock.cpp">
       <Filter>Bengine\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="BoxColliderComponent.cpp">
-      <Filter>Bengine\Components</Filter>
-    </ClCompile>
     <ClCompile Include="GameInfo.cpp">
       <Filter>Bengine</Filter>
     </ClCompile>
     <ClCompile Include="PhysxManager.cpp">
       <Filter>Bengine</Filter>
     </ClCompile>
-    <ClCompile Include="RigidBodyComponent.cpp">
+    <ClCompile Include="ColliderComponent.cpp">
+      <Filter>Bengine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent2D.cpp">
       <Filter>Bengine\Components</Filter>
     </ClCompile>
   </ItemGroup>

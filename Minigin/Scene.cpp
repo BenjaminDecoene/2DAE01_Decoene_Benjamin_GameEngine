@@ -2,7 +2,7 @@
 #include "Scene.h"
 #include "Object.h"
 #include "TextureComponent2D.h"
-#include "BoxColliderComponent.h"
+#include "ColliderComponent.h"
 
 using namespace dae;
 
@@ -30,7 +30,7 @@ Scene::Scene(const std::string& name)
 	//auto gameObject = new Object();
 	//gameObject->AddComponent(new TextureComponent2D(gameObject, "brick.jpg", {windowSize.x, 50}));
 	////gameObject->SetVelocity({0,5,0});
-	//gameObject->AddComponent(new BoxColliderComponent(gameObject, GetWorld(), {0, 10}, {windowSize.x,5}));
+	//gameObject->AddComponent(new ColliderComponent(gameObject, GetWorld(), {0, 10}, {windowSize.x,5}));
 	//Add(gameObject);
 }
 

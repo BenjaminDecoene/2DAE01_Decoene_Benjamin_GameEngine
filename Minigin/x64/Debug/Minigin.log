@@ -1,24 +1,4 @@
-﻿  pch.cpp
-  BoxColliderComponent.cpp
-  Entity.cpp
-  Font.cpp
-  FPSclock.cpp
-  GameInfo.cpp
-  Object.cpp
-  InputManager.cpp
-  Minigin.cpp
-  Component.cpp
-  PhysxManager.cpp
-  Renderer.cpp
-  ResourceManager.cpp
-  Scene.cpp
-  SceneManager.cpp
-  TextObject.cpp
-  Texture2D.cpp
-  TextureComponent2D.cpp
-  Time.cpp
-  Transform.cpp
-  Generating Code...
+﻿  SpriteComponent2D.cpp
   Minigin.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\x64\Debug\Minigin.lib
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2\lib\x64\SDL2.dll
   1 File(s) copied
