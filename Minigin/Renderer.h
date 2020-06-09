@@ -14,11 +14,12 @@ namespace dae
 	{
 	public:
 		void Init(SDL_Window* window);
-		void Render() const;
+		void Render(float interpolation) const;
 		void Destroy();
 
 		void RenderTexture(const Texture2D& texture, float x, float y) const;
 		void RenderTexture(const Texture2D& texture, float x, float y, float width, float height) const;
+		void RenderTexture(const Texture2D& texture, float x, float y, float width, float height, float angle) const;
 
 		SDL_Renderer* GetSDLRenderer() const { return m_Renderer; }
 	private:

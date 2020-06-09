@@ -11,7 +11,7 @@ void Entity::Update()
 {
 	//	Update pos
 	const float timePassed{ GameInfo::GetInstance().GetMsPerFrame() / 1000.f };
-	const glm::vec3 newPos{ m_Transform.GetPosition() + m_Velocity * timePassed };
+	const b2Vec3 newPos{ m_Transform.GetPosition() + timePassed * m_Velocity };
 	m_Transform.SetPosition(newPos);
 
 	//	Update components
@@ -21,11 +21,11 @@ void Entity::Update()
 	}
 }
 
-void Entity::Render() const
+void Entity::Render(float interpolation) const
 {
 	//	Render components
 	for(auto i : m_pComponents)
 	{
-		i->Render();
+		i->Render(interpolation);
 	}
 }

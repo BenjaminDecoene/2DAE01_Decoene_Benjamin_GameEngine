@@ -7,9 +7,9 @@ public:
 	Entity();
 	//	Base functions
 	void Update() override;
-	void Render() const override;
+	void Render(float interpolation) const override;
 	//	Getters, setters
-	void SetVelocity(glm::vec3 velocity) { m_Velocity = velocity; }
+	void SetVelocity(b2Vec3 velocity) { m_Velocity = velocity; }
 private:
-	glm::vec3 m_Velocity;
+	b2Vec3 m_Velocity;
 };

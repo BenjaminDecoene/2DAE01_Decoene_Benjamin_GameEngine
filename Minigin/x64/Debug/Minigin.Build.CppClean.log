@@ -11,6 +11,7 @@ d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\scenemanager.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\scene.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\resourcemanager.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\renderer.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\physxmanager.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\component.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\inputmanager.obj
@@ -18,13 +19,7 @@ d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\object.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\gameinfo.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\fpsclock.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\font.obj
-d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\entity.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\boxcollidercomponent.obj
-d:\school\2dae\programming4\gameengine_git\x64\debug\minigin.lib
-d:\school\2dae\programming4\gameengine_git\x64\debug\minigin.pdb
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.tlog\cl.command.1.tlog
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.tlog\cl.read.1.tlog
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.tlog\cl.write.1.tlog
-d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.tlog\lib-link.read.1.tlog
-d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.tlog\lib-link.write.1.tlog
-d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.tlog\lib.command.1.tlog

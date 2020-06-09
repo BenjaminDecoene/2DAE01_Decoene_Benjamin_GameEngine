@@ -15,7 +15,7 @@ namespace dae
 		void SetActiveScene(const std::string& name);
 
 		void Update();
-		void Render();
+		void Render(float interpolation);
 	private:
 		friend class Singleton<SceneManager>;
 		SceneManager() = default;

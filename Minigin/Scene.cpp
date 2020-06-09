@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Object.h"
+#include "TextureComponent2D.h"
+#include "BoxColliderComponent.h"
 
 using namespace dae;
 
@@ -14,14 +16,22 @@ Scene::Scene(const std::string& name)
 	m_World = new b2World(gravity);
 
 	const auto windowSize{ GameInfo::GetInstance().GetWindowSize() };
+
+	const float ppm = GameInfo::GetInstance().GetPPM();
 	//	Ground test
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0.0f, 10.0f);
+	groundBodyDef.position.Set(0.f, 0.f / ppm);
 	b2Body* groundBody = m_World->CreateBody(&groundBodyDef);
 	//	Make the ground fixture
 	b2PolygonShape groundBox;
-	groundBox.SetAsBox(windowSize.x, 5.0f);
+	groundBox.SetAsBox(windowSize.x, 0.0f / ppm);
 	groundBody->CreateFixture(&groundBox, 0.0f);
+
+	//auto gameObject = new Object();
+	//gameObject->AddComponent(new TextureComponent2D(gameObject, "brick.jpg", {windowSize.x, 50}));
+	////gameObject->SetVelocity({0,5,0});
+	//gameObject->AddComponent(new BoxColliderComponent(gameObject, GetWorld(), {0, 10}, {windowSize.x,5}));
+	//Add(gameObject);
 }
 
 Scene::~Scene() = default;
@@ -43,10 +53,10 @@ void Scene::Update()
 	
 }
 
-void Scene::Render() const
+void Scene::Render(float interpolation) const
 {
 	for (const auto& object : m_Objects)
 	{
-		object->Render();
+		object->Render(interpolation);
 	}
 }

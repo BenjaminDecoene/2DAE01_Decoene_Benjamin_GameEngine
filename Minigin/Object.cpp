@@ -20,11 +20,11 @@ void dae::Object::Update()
 	}
 }
 
-void dae::Object::Render() const
+void dae::Object::Render(float interpolation) const
 {
 	for(auto i : m_pComponents)
 	{
-		i->Render();
+		i->Render(interpolation);
 	}
 }
 

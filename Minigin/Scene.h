@@ -11,7 +11,7 @@ namespace dae
 		void Add(SceneObject* object);
 
 		void Update();
-		void Render() const;
+		void Render(float interpolation) const;
 		std::string GetName() const { return m_Name; }
 		b2World* GetWorld() const { return m_World; }
 		

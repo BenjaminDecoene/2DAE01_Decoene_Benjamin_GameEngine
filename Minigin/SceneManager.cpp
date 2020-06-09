@@ -8,9 +8,9 @@ void dae::SceneManager::Update()
 	m_Scenes[m_ActiveScene]->Update();
 }
 
-void dae::SceneManager::Render()
+void dae::SceneManager::Render(float interpolation)
 {
-	m_Scenes[m_ActiveScene]->Render();
+	m_Scenes[m_ActiveScene]->Render(interpolation);
 }
 
 dae::Scene& dae::SceneManager::CreateScene(const std::string& name)

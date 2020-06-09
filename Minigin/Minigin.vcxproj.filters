@@ -29,9 +29,6 @@
     <ClInclude Include="Time.h">
       <Filter>Bengine\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectComponents.h">
-      <Filter>Bengine\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Command.h">
       <Filter>Bengine\Helpers</Filter>
     </ClInclude>
@@ -92,6 +89,15 @@
     <ClInclude Include="BoxColliderComponent.h">
       <Filter>Bengine\Components</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectComponents.h">
+      <Filter>Bengine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysxManager.h">
+      <Filter>Bengine</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBodyComponent.h">
+      <Filter>Bengine\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TextureComponent2D.cpp">
@@ -150,6 +156,12 @@
     </ClCompile>
     <ClCompile Include="GameInfo.cpp">
       <Filter>Bengine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysxManager.cpp">
+      <Filter>Bengine</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBodyComponent.cpp">
+      <Filter>Bengine\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

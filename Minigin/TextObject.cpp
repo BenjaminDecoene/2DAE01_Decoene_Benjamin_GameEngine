@@ -32,8 +32,10 @@ void dae::TextObject::Update()
 	}
 }
 
-void dae::TextObject::Render() const
+void dae::TextObject::Render(float interpolation) const
 {
+	UNREFERENCED_PARAMETER(interpolation);
+	
 	if (m_Texture != nullptr)
 	{
 		const auto pos = m_Transform.GetPosition();

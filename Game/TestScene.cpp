@@ -15,8 +15,14 @@ TestScene::TestScene(const std::string& name)
 	Add(to);
 
 	auto gameObject = new Entity();
-	//gameObject->AddComponent(new TextureComponent2D(gameObject, "background.jpg"));
+	gameObject->AddComponent(new TextureComponent2D(gameObject, "brick.jpg", {50, 50}));
 	//gameObject->SetVelocity({0,5,0});
-	gameObject->AddComponent(new BoxColliderComponent(gameObject, GetWorld(), {50, 50}, {10, 10}));
+	gameObject->AddComponent(new BoxColliderComponent(gameObject, GetWorld(), {50, 300}, {25,25}));
 	Add(gameObject);
+
+	auto gameObject2 = new Entity();
+	gameObject2->AddComponent(new TextureComponent2D(gameObject2, "brick.jpg", {100, 100}));
+	//gameObject->SetVelocity({0,5,0});
+	gameObject2->AddComponent(new BoxColliderComponent(gameObject2, GetWorld(), {75, 500}, {50,50}));
+	Add(gameObject2);
 }

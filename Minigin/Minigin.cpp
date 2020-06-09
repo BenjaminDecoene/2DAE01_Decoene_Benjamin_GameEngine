@@ -121,7 +121,7 @@ void dae::Minigin::Run()
 		//	updating does require some time so frames will not be rendered at the time of updating.
 		//	by giving an interpolation value(normalized)i can calculate where
 		//	something should be drawn based on it current velocity.
-		renderer.Render(/*lag.count() / MsPerFrame*/);
+		renderer.Render(float(lag.count() / MsPerFrame));
 		//	update the FPSclock each time a frame gets rendered
 		m_FPSclock.Update();
 	}

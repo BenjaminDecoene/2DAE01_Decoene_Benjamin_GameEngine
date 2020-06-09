@@ -11,7 +11,7 @@ namespace dae
 		Object() = default;
 		//	Base functions
 		void Update() override;
-		void Render() const override;
+		void Render(float interpolation) const override;
 
 		void AddComponent(Component* component);
 		
@@ -29,7 +29,9 @@ namespace dae
 			return nullptr;
 		}
 		void SetPosition(float x, float y);
+		void SetRotation(float angle) { m_Rotation = angle; }
 		Transform GetTransform() const { return m_Transform; }
+		float GetRotation() const { return m_Rotation; }
 
 		//	Rule of 5
 		virtual ~Object();
@@ -40,6 +42,7 @@ namespace dae
 
 	protected:
 		Transform m_Transform;
+		float m_Rotation = 0.f;
 		std::vector<Component*> m_pComponents;
 	};
 }

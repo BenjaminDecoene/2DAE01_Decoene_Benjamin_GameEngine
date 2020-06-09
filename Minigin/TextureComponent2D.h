@@ -5,12 +5,13 @@
 class TextureComponent2D final: public Component
 {
 public:
-	explicit TextureComponent2D(dae::Object* parent, const std::string& file);
+	explicit TextureComponent2D(dae::Object* parent, const std::string& file, const b2Vec2& dimensions);
 	~TextureComponent2D() override = default;
 	
 	void Update() override;
-	void Render() const override;
+	void Render(float interpolation) const override;
 private:
 	std::shared_ptr<dae::Texture2D> m_pTexture;
+	b2Vec2 m_Dimensions;
 };
 

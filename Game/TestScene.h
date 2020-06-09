@@ -7,4 +7,3 @@ public:
 	TestScene(const std::string& name);
 private:
 };
-
