@@ -11,7 +11,7 @@ void Entity::Update()
 {
 	//	Update pos
 	const float timePassed{ GameInfo::GetInstance().GetMsPerFrame() / 1000.f };
-	const b2Vec3 newPos{ m_Transform.GetPosition() + timePassed * m_Velocity };
+	const b2Vec2 newPos{ m_Transform.GetPosition() + timePassed * m_Velocity };
 	m_Transform.SetPosition(newPos);
 
 	//	Update components

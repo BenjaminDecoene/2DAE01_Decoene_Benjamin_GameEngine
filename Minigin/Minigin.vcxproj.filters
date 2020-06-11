@@ -92,11 +92,14 @@
     <ClInclude Include="PhysxManager.h">
       <Filter>Bengine</Filter>
     </ClInclude>
-    <ClInclude Include="ColliderComponent.h">
-      <Filter>Bengine\Components</Filter>
-    </ClInclude>
     <ClInclude Include="SpriteComponent2D.h">
       <Filter>Bengine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysxComponent.h">
+      <Filter>Bengine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Bengine\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -157,11 +160,17 @@
     <ClCompile Include="PhysxManager.cpp">
       <Filter>Bengine</Filter>
     </ClCompile>
-    <ClCompile Include="ColliderComponent.cpp">
-      <Filter>Bengine\Components</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteComponent2D.cpp">
       <Filter>Bengine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>Bengine\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysxComponent.cpp">
+      <Filter>Bengine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Bengine\Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

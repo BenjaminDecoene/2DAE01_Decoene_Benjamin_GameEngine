@@ -47,33 +47,6 @@ void dae::Minigin::Init()
 }
 
 
-/**
- * Code constructing the scene world starts here
- */
-//void dae::Minigin::LoadGame()
-//{
-//	auto& scene = SceneManager::GetInstance().CreateScene("Demo");
-
-	//auto go = std::make_shared<Object>();
-	//go->AddComponent(new TextureComponent2D("background.jpg"));
-	//scene.Add(go);
-
-	//go = std::make_shared<Object>();
-	//go->AddComponent(new TextureComponent2D("logo.png"));
-	//go->SetPosition(216, 180);
-	//scene.Add(go);
-
-	//auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	//auto to = new TextObject("Programming 4 Assignment", font);
-	//to->SetPosition(80, 20);
-	//scene.Add(to);
-
-	//// fps counter
-	//auto fpsFont = ResourceManager::GetInstance().LoadFont("Lingua.otf", 20);
-	//m_Fps = new TextObject (std::to_string(Time::GetInstance().GetFps()), fpsFont);
-	//m_Fps->SetPosition(10, 10);
-	//scene.Add(m_Fps);
-//}
 
 void dae::Minigin::Cleanup()
 {
@@ -87,7 +60,7 @@ void dae::Minigin::Run()
 {
 	auto& renderer = Renderer::GetInstance();
 	auto& sceneManager = SceneManager::GetInstance();
-	//auto& input = InputManager::GetInstance();
+	auto& input = InputManager::GetInstance();
 	auto& time = Time::GetInstance();
 	time.SetMsPerFrame(MsPerFrame);
 	
@@ -106,6 +79,7 @@ void dae::Minigin::Run()
 		lag += elapsed;
 	
 		//	process input
+		input.ProcessInput();
 	
 		//	if frame takes to long, update till up to date before rendering
 		while(lag.count() >= MsPerFrame)
@@ -129,11 +103,3 @@ void dae::Minigin::Run()
 	Cleanup();
 }
 
-//void dae::Minigin::UpdateFpsCounter() const
-//{
-//	const std::string fpsString{std::to_string(Time::GetInstance().GetFps())};
-//	const int nrDigits{0};
-//
-//	// Resize the text
-//	m_Fps->SetText(fpsString.substr(0, fpsString.find(".") + nrDigits));
-//}

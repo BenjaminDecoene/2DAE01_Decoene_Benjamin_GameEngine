@@ -1,19 +1,23 @@
 #include "pch.h"
 #include "InputManager.h"
-#include <iostream>
 
 void dae::InputManager::ProcessInput()
 {
+	//	controller support
 	ZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));
 	XInputGetState(0, &m_CurrentState);
-
+	
 	HandleInput();
-	// todo: read the input
 }
 
 bool dae::InputManager::IsPressed(ControllerButton button) const
 {
-	// todo: return whether the given button is pressed or not.
+	//	update the keys
+	SDL_PumpEvents();
+
+	//	state of the keys
+	const UINT8* state{ SDL_GetKeyboardState(NULL)};
+
 	switch (button)
 	{
 	case ControllerButton::ButtonA:
@@ -24,50 +28,77 @@ bool dae::InputManager::IsPressed(ControllerButton button) const
 		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_X;
 	case ControllerButton::ButtonY:
 		return m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_Y;
+	case ControllerButton::KeyW:
+		return state[SDL_SCANCODE_W];
+	case ControllerButton::keyA:
+		return state[SDL_SCANCODE_A];
+	case ControllerButton::KeyS:
+		return state[SDL_SCANCODE_S];
+	case ControllerButton::KeyD:
+		return state[SDL_SCANCODE_D];
 	default: return false;
 	}
 }
 
 void dae::InputManager::BindCommand(ControllerButton button, std::unique_ptr<Command> command)
 {
-	switch (button)
+	m_pButtons[UINT(button)].pCommand = std::move(command);
+}
+
+void dae::InputManager::HandleInput()
+{
+	for(size_t i{}; i < m_pButtons.size(); i++)
 	{
-	case ControllerButton::ButtonA:
-		m_pButtonA = std::move(command);
-		break;
-	case ControllerButton::ButtonB:
-		m_pButtonB = std::move(command);
-		break;
-	case ControllerButton::ButtonX:
-		m_pButtonX = std::move(command);
-		break;
-	case ControllerButton::ButtonY:
-		m_pButtonY = std::move(command);		
-		break;
+		const bool buttonPressed{ IsPressed(static_cast<ControllerButton>(i)) };
+
+		switch(m_pButtons[i].State)
+		{
+		case ButtonState::idle:
+			if(buttonPressed)
+				m_pButtons[i].State = ButtonState::onPressed;
+			break;
+		case ButtonState::onPressed:
+			m_pButtons[i].State = ButtonState::pressed;
+			break;
+		case ButtonState::pressed:
+			if(!buttonPressed)
+				m_pButtons[i].State = ButtonState::released;
+			break;
+		case ButtonState::released:
+			m_pButtons[i].State = ButtonState::idle;
+			break;
+		}
+	}
+
+	ExecuteButtonState();
+}
+
+void dae::InputManager::ExecuteButtonState() const
+{
+	for(size_t i{}; i < m_pButtons.size(); i++)
+	{
+		if(!m_pButtons[i].pCommand)
+			continue;
+		
+		switch(m_pButtons[i].State)
+		{
+		case ButtonState::released:
+			m_pButtons[i].pCommand->Released();
+			break;
+		case ButtonState::pressed:
+			m_pButtons[i].pCommand->Pressed();
+			break;
+		case ButtonState::onPressed:
+			m_pButtons[i].pCommand->OnPressed();
+			break;
+		case ButtonState::idle:
+			break;
+		}
 	}
 }
 
-void dae::InputManager::HandleInput() const
+dae::InputManager::InputManager()
 {
-	if(IsPressed(ControllerButton::ButtonA))
-	{
-		if(m_pButtonA)
-			m_pButtonA->Execute();
-	}
-	if(IsPressed(ControllerButton::ButtonB))
-	{
-		if(m_pButtonB)
-			m_pButtonB->Execute();
-	}
-	if(IsPressed(ControllerButton::ButtonX))
-	{
-		if(m_pButtonX)
-			m_pButtonX->Execute();
-	}
-	if(IsPressed(ControllerButton::ButtonY))
-	{
-		if(m_pButtonY)
-			m_pButtonY->Execute();
-	}
+	m_pButtons.resize(8);
 }
 

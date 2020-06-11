@@ -17,13 +17,13 @@ namespace dae
 		
 		//	Setters, getters
 		template<typename T>
-		inline T GetComponent()
+		T* GetComponent()
 		{
 			for(Component* i : m_pComponents)
 			{
-				if(static_cast<T>(i) != nullptr)
+				if(dynamic_cast<T*>(i))
 				{
-					return static_cast<T>(i);
+					return dynamic_cast<T*>(i);
 				}
 			}
 			return nullptr;

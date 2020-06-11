@@ -2,7 +2,6 @@ d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.pch
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.pdb
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.idb
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\pch.obj
-d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\transform.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\time.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\texturecomponent2d.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\texture2d.obj
@@ -21,8 +20,12 @@ d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\gameinfo.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\fpsclock.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\font.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\entity.obj
-d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\collidercomponent.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\command.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\physxcomponent.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\utils.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\transform.obj
 d:\school\2dae\programming4\gameengine_git\x64\debug\minigin.lib
+d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\inputmanager.obj.enc
 d:\school\2dae\programming4\gameengine_git\x64\debug\minigin.pdb
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.tlog\cl.command.1.tlog
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.tlog\cl.read.1.tlog

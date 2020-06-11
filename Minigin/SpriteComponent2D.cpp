@@ -9,8 +9,8 @@ SpriteComponent2D::SpriteComponent2D(dae::Object* parent, const std::string& fil
 	,m_Columns(columns)
 	,m_Fps(fps)
 	,m_CurrentFrame()
-	,m_StartPos()
-	,m_EndPos(rows * columns)
+	,m_StartFrame()
+	,m_EndFrame(rows * columns)
 	,m_ElapsedTime()
 {
 	int w;
@@ -21,24 +21,24 @@ SpriteComponent2D::SpriteComponent2D(dae::Object* parent, const std::string& fil
 }
 
 SpriteComponent2D::SpriteComponent2D(dae::Object* parent, const std::string& file, const b2Vec2& drawSize, UINT rows,
-	UINT columns, float fps, UINT startPos, UINT endPos)
+	UINT columns, float fps, UINT startFrame, UINT endFrame)
 	:SpriteComponent2D(parent, file, drawSize, rows, columns, fps)
 {
-	m_StartPos = startPos;
-	m_EndPos = endPos;
+	m_StartFrame = startFrame;
+	m_EndFrame = endFrame;
 }
 
 void SpriteComponent2D::Update()
 {
 	m_ElapsedTime += GameInfo::GetInstance().GetMsPerFrame() / 1000.f;
-	m_CurrentFrame = m_StartPos + int(m_ElapsedTime * m_Fps) % (m_EndPos - m_StartPos);
+	m_CurrentFrame = m_StartFrame + int(m_ElapsedTime * m_Fps) % (m_EndFrame - m_StartFrame);
 }
 
 void SpriteComponent2D::Render(float interpolation) const
 {
 	UNREFERENCED_PARAMETER(interpolation);
 	
-	const b2Vec3 parentPos{ m_pParent->GetTransform().GetPosition() };
+	const b2Vec2 parentPos{ m_pParent->GetTransform().GetPosition() };
 	const float parentRot{ m_pParent->GetRotation() };
 	const float ppm = GameInfo::GetInstance().GetPPM();
 
@@ -56,5 +56,5 @@ void SpriteComponent2D::Render(float interpolation) const
 	src.w = int(tile.x);
 	src.h = int(tile.y);
 	
-	dae::Renderer::GetInstance().RenderTexture(*m_pTexture, parentPos.x, GameInfo::GetWindowSize().y - parentPos.y, src, m_Dimensions.x, m_Dimensions.y, parentRot);
+	dae::Renderer::GetInstance().RenderTexture(*m_pTexture, parentPos.x - m_Dimensions.x / 2, GameInfo::GetWindowSize().y - parentPos.y - m_Dimensions.y / 2, src, m_Dimensions.x, m_Dimensions.y, parentRot);
 }

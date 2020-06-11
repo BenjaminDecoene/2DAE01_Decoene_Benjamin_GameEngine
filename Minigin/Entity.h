@@ -9,7 +9,7 @@ public:
 	void Update() override;
 	void Render(float interpolation) const override;
 	//	Getters, setters
-	void SetVelocity(b2Vec3 velocity) { m_Velocity = velocity; }
+	void SetVelocity(b2Vec2 velocity) { m_Velocity = velocity; }
 private:
-	b2Vec3 m_Velocity;
+	b2Vec2 m_Velocity;
 };

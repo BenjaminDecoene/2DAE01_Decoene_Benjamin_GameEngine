@@ -19,7 +19,7 @@ void TextureComponent2D::Render(float interpolation) const
 {
 	UNREFERENCED_PARAMETER(interpolation);
 	
-	const b2Vec3 parentPos{ m_pParent->GetTransform().GetPosition() };
+	const b2Vec2 parentPos{ m_pParent->GetTransform().GetPosition() };
 	const float parentRot{ m_pParent->GetRotation() };
 	const float ppm = GameInfo::GetInstance().GetPPM();
 	
