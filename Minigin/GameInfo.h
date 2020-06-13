@@ -3,7 +3,7 @@
 #include "Singleton.h"
 #include <box2d.h>
 
-class GameInfo : public dae::Singleton<GameInfo>
+class GameInfo : public Singleton<GameInfo>
 {
 public:
 	static int GetMsPerFrame() { return MsPerFrame; }

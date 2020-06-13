@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "InputManager.h"
 
-void dae::InputManager::ProcessInput()
+void InputManager::ProcessInput()
 {
 	//	controller support
 	ZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));
@@ -10,7 +10,7 @@ void dae::InputManager::ProcessInput()
 	HandleInput();
 }
 
-bool dae::InputManager::IsPressed(ControllerButton button) const
+bool InputManager::IsPressed(ControllerButton button) const
 {
 	//	update the keys
 	SDL_PumpEvents();
@@ -40,12 +40,12 @@ bool dae::InputManager::IsPressed(ControllerButton button) const
 	}
 }
 
-void dae::InputManager::BindCommand(ControllerButton button, std::unique_ptr<Command> command)
+void InputManager::BindCommand(ControllerButton button, std::unique_ptr<Command> command)
 {
 	m_pButtons[UINT(button)].pCommand = std::move(command);
 }
 
-void dae::InputManager::HandleInput()
+void InputManager::HandleInput()
 {
 	for(size_t i{}; i < m_pButtons.size(); i++)
 	{
@@ -73,7 +73,7 @@ void dae::InputManager::HandleInput()
 	ExecuteButtonState();
 }
 
-void dae::InputManager::ExecuteButtonState() const
+void InputManager::ExecuteButtonState() const
 {
 	for(size_t i{}; i < m_pButtons.size(); i++)
 	{
@@ -97,7 +97,7 @@ void dae::InputManager::ExecuteButtonState() const
 	}
 }
 
-dae::InputManager::InputManager()
+InputManager::InputManager()
 {
 	m_pButtons.resize(8);
 }

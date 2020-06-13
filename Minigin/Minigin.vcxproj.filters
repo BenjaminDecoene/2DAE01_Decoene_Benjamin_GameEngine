@@ -21,6 +21,9 @@
     <Filter Include="Bengine\Objects">
       <UniqueIdentifier>{c64a7d8b-e801-42e4-befb-072a318dccc5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Bengine\Observer Pattern">
+      <UniqueIdentifier>{a649af0d-a7da-4f5a-b8fb-4f01d43b3f9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextureComponent2D.h">
@@ -101,6 +104,15 @@
     <ClInclude Include="Utils.h">
       <Filter>Bengine\Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Bengine\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Subject.h">
+      <Filter>Bengine\Observer Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>Bengine\Observer Pattern</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TextureComponent2D.cpp">
@@ -171,6 +183,15 @@
     </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>Bengine\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Bengine\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Observer.cpp">
+      <Filter>Bengine\Observer Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Subject.cpp">
+      <Filter>Bengine\Observer Pattern</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

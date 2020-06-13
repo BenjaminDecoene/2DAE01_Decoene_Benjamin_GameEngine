@@ -1,7 +1,7 @@
 #pragma once
 #include "Singleton.h"
 
-class Time : public dae::Singleton<Time>
+class Time : public Singleton<Time>
 {
 public:
 	void SetMsPerFrame(int msPerFrame) { m_MsPerFrame = msPerFrame; }

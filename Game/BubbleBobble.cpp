@@ -5,6 +5,6 @@
 
 BubbleBobble::BubbleBobble()
 {
-	dae::SceneManager::GetInstance().AddScene(new TestScene("TestScene"));
-	dae::SceneManager::GetInstance().SetActiveScene("TestScene");
+	SceneManager::GetInstance().AddScene(new TestScene("TestScene"));
+	SceneManager::GetInstance().SetActiveScene("TestScene");
 }

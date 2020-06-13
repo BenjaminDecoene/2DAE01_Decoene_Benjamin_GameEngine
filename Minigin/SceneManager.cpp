@@ -3,34 +3,34 @@
 #include "Scene.h"
 
 
-void dae::SceneManager::Update()
+void SceneManager::Update()
 {
 	m_Scenes[m_ActiveScene]->Update();
 }
 
-void dae::SceneManager::Render(float interpolation)
+void SceneManager::Render(float interpolation)
 {
 	m_Scenes[m_ActiveScene]->Render(interpolation);
 }
 
-dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
+Scene& SceneManager::CreateScene(const std::string& name)
 {
 	const auto scene = new Scene(name);
 	m_Scenes.push_back(scene);
 	return *scene;
 }
 
-void dae::SceneManager::AddScene(Scene* scene)
+void SceneManager::AddScene(Scene* scene)
 {
 	m_Scenes.push_back(scene);
 }
 
-dae::Scene& dae::SceneManager::GetScene()
+Scene& SceneManager::GetScene()
 {
 	return *m_Scenes[m_ActiveScene];
 }
 
-dae::Scene& dae::SceneManager::GetScene(const std::string& name)
+Scene& SceneManager::GetScene(const std::string& name)
 {
 	for(size_t i{}; i < m_Scenes.size(); i++)
 	{
@@ -42,7 +42,7 @@ dae::Scene& dae::SceneManager::GetScene(const std::string& name)
 	return CreateScene(name);
 }
 
-void dae::SceneManager::SetActiveScene(const std::string& name)
+void SceneManager::SetActiveScene(const std::string& name)
 {
 	for(size_t i{}; i < m_Scenes.size(); i++)
 	{

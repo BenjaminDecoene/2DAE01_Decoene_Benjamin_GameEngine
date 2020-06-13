@@ -8,7 +8,10 @@
 #include <SDL.h>
 #include "Time.h"
 #include <iomanip>
+
 #include "SceneManager.h"
+#include "AudioManager.h"
+
 
 using namespace std;
 using namespace std::chrono;
@@ -37,16 +40,16 @@ dae::Minigin::Minigin()
 
 	Renderer::GetInstance().Init(m_Window);
 
-	// tell the resource manager where he can find the game data
+	//	tell the resource manager where he can find the game data
 	ResourceManager::GetInstance().Init("../Data/");
+	//	tell the audio manager where the audio is stored
+	AudioManager::GetInstance().Init("../Data/Sound/");
 }
 
 void dae::Minigin::Init()
 {
 	m_FPSclock.Init();
 }
-
-
 
 void dae::Minigin::Cleanup()
 {
@@ -62,6 +65,7 @@ void dae::Minigin::Run()
 	auto& sceneManager = SceneManager::GetInstance();
 	auto& input = InputManager::GetInstance();
 	auto& time = Time::GetInstance();
+	AudioManager::GetInstance().Update();
 	time.SetMsPerFrame(MsPerFrame);
 	
 	bool doContinue = true;

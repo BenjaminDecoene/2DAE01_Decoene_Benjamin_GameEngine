@@ -4,8 +4,6 @@
 #include "TextureComponent2D.h"
 #include "PhysxComponent.h"
 
-using namespace dae;
-
 unsigned int Scene::m_IdCounter = 0;
 
 Scene::Scene(const std::string& name)

@@ -1,80 +1,58 @@
 #include "pch.h"
 #include "TestScene.h"
 #include "ResourceManager.h"
-#include "TextObject.h"
-#include "Entity.h"
 #include "TextureComponent2D.h"
 #include "PhysxComponent.h"
 #include "SpriteComponent2D.h"
-#include "InputManager.h"
+#include "AudioManager.h"
+#include "Player.h"
+#include "Wall.h"
 
 TestScene::TestScene(const std::string& name)
 	:Scene(name)
 {
-	const auto font = dae::ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-	auto to = new dae::TextObject("Programming 4 Assignment", font);
-	to->SetPosition(80, 20);
-	Add(to);
+	AudioManager::GetInstance().LoadSound("death.mp3");
 
-	auto gameObject2 = new Entity();
-	gameObject2->SetPosition(75.f, 500.f);
-	//	add sprite component
-	gameObject2->AddComponent(new SpriteComponent2D(gameObject2, "BBSprites/Sprites0.png", {100, 100}, 16, 8, 8, 0, 16));
+	//	make the background
+	auto background = new Object();
+	background->SetPosition(GameInfo::GetWindowSize().x / 2, GameInfo::GetWindowSize().y / 2);
+	background->AddComponent(new TextureComponent2D(background, "background.jpg", GameInfo::GetWindowSize()));
+	Add(background);
 
-	//	add collider component
+	//	make the player
+	auto player = new Player({75.f, 500.f});
+	
+	//	make sprite component
+	const auto sprite = new SpriteComponent2D(player, "BBSprites/Sprites0.png", {100, 100}, 16, 8, 8, 0, 16);
+
+	//	make physx component
 	const float ppm = GameInfo::GetInstance().GetPPM();
 	//	make the body
-	auto bodyDef = new b2BodyDef() ;
+	auto bodyDef = new b2BodyDef();
 	bodyDef->type = b2_dynamicBody;
 	
-	auto collider = new PhysxComponent(gameObject2, GetWorld(), bodyDef);
+	auto physx = new PhysxComponent(player, GetWorld(), bodyDef);
 	
 	b2PolygonShape boxShape;
 	boxShape.SetAsBox((50 / ppm), (50  / ppm));
 	const auto fixtureDef = new b2FixtureDef();
 	fixtureDef->shape = &boxShape;
-	fixtureDef->density = 1.0f;
+	fixtureDef->density = 100.0f;
 	fixtureDef->friction = 0.7f;
 	fixtureDef->restitution = 0.3f;
 
-	collider->AddFixture(fixtureDef);
+	physx->AddFixture(fixtureDef);
 
-	//b2CircleShape circleShape;
-	//circleShape.m_radius = 100 / ppm;
-	//circleShape.m_p = b2Vec2(0 / ppm, 75 / ppm) ;
-	//const auto fixtureDefCircle = new b2FixtureDef();
-	//fixtureDefCircle->shape = &circleShape;
-	//fixtureDefCircle->density = 1.0f;
-	//fixtureDefCircle->friction = 0.8f;
-	//fixtureDefCircle->restitution = 0.3f;
-
-	//collider->AddFixture(fixtureDefCircle);
 	
-	gameObject2->AddComponent(collider);
+	player->Init(sprite, physx, 10);
 	
-	dae::InputManager::GetInstance().BindCommand(dae::ControllerButton::KeyD, 
-		std::make_unique<CommandFunction>(
-			nullptr,
-			[gameObject2](){gameObject2->GetComponent<PhysxComponent>()->SetDesiredVelocity({30,0});},
-			[gameObject2](){gameObject2->SetVelocity({0, 0});}));
+	Add(player);
 
-	dae::InputManager::GetInstance().BindCommand(dae::ControllerButton::keyA, 
-		std::make_unique<CommandFunction>(
-			nullptr,
-			[gameObject2](){gameObject2->GetComponent<PhysxComponent>()->SetDesiredVelocity({-30,0});},
-			[gameObject2](){gameObject2->SetVelocity({0, 0});}));
+	AudioManager::GetInstance().AddEvent("PlayerUp", [](){AudioManager::GetInstance().PlaySound("death.mp3");});
 
-	dae::InputManager::GetInstance().BindCommand(dae::ControllerButton::KeyW, 
-		std::make_unique<CommandFunction>(
-			nullptr,
-			[gameObject2](){gameObject2->GetComponent<PhysxComponent>()->SetDesiredVelocity({0,20});},
-			[gameObject2](){gameObject2->SetVelocity({0, 0});}));
+	//	make some walls
+	auto wall = new Wall({200, 50});
 
-	dae::InputManager::GetInstance().BindCommand(dae::ControllerButton::KeyS, 
-		std::make_unique<CommandFunction>(
-			nullptr,
-			[gameObject2](){gameObject2->GetComponent<PhysxComponent>()->SetDesiredVelocity({0,-50});},
-			[gameObject2](){gameObject2->SetVelocity({0, 0});}));
-	
-	Add(gameObject2);
+	wall->Init("brick.jpg", {400, 100}, this);
+	Add(wall);
 }

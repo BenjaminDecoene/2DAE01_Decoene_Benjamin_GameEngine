@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.h"
 
-class Entity final: public dae::Object
+class Entity : public Object
 {
 public:
 	Entity();

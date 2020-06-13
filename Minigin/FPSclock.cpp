@@ -7,23 +7,23 @@
 #include "Scene.h"
 
 
-dae::FPSclock::FPSclock()
+FPSclock::FPSclock()
 	:m_Transform{10.f, 10.f}
 	,m_pTextObject()
 	,m_FrameCount()
 {
 }
 
-void dae::FPSclock::Init()
+void FPSclock::Init()
 {
-	const auto fpsFont = dae::ResourceManager::GetInstance().LoadFont("Lingua.otf", 20);
-	m_pTextObject = new dae::TextObject (std::to_string(m_FrameCount), fpsFont);
+	const auto fpsFont = ResourceManager::GetInstance().LoadFont("Lingua.otf", 20);
+	m_pTextObject = new TextObject (std::to_string(m_FrameCount), fpsFont);
 	m_pTextObject->SetPosition(m_Transform.x, m_Transform.y);
 
 	SceneManager::GetInstance().GetScene().Add(m_pTextObject);
 }
 
-void dae::FPSclock::Update()
+void FPSclock::Update()
 {
 	//	if a new second started reset framecount
 	if(Time::GetInstance().GetIsNewSecond())

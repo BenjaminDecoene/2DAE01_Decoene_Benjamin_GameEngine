@@ -1,0 +1,2 @@
+﻿  pch.cpp
+D:\school\2DAE\programming4\GameEngine_Git\Minigin\pch.cpp(2,1): error C2857: '#include' statement specified with the /YcMiniginPCH.h command-line option was not found in the source file

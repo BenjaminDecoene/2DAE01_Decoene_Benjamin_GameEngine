@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 
-class TestScene : public dae::Scene
+class TestScene : public Scene
 {
 public:
 	TestScene(const std::string& name);

@@ -4,7 +4,7 @@
 #include "Object.h"
 #include "Utils.h"
 
-PhysxComponent::PhysxComponent(dae::Object* parent, b2World* world, b2BodyDef* body)
+PhysxComponent::PhysxComponent(Object* parent, b2World* world, b2BodyDef* body)
 	:Component(parent)
 {
 	const float ppm = GameInfo::GetInstance().GetPPM();
@@ -29,7 +29,7 @@ void PhysxComponent::Render(float interpolation) const
 
 	//	Draw the fixtures
 	
-	auto& renderer = dae::Renderer::GetInstance();
+	auto& renderer = Renderer::GetInstance();
 	const float ppm = GameInfo::GetInstance().GetPPM();
 	b2CircleShape* circleShape{};
 	b2PolygonShape* polygonShape{};

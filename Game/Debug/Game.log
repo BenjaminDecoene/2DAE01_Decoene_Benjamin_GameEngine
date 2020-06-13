@@ -1,0 +1,5 @@
+﻿  BubbleBobble.cpp
+  Main.cpp
+  TestScene.cpp
+  Generating Code...
+LINK : fatal error LNK1104: cannot open file 'D:\school\2DAE\programming4\GameEngine_Git\Win32\Debug\Minigin.lib'

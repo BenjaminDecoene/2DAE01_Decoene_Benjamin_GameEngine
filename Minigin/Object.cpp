@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 #include "Renderer.h"
 
-dae::Object::~Object()
+Object::~Object()
 {
 	for (std::vector<Component*>::iterator it{ m_pComponents.begin() }; it != m_pComponents.end(); ++it)
 	{
@@ -12,7 +12,7 @@ dae::Object::~Object()
 	m_pComponents.clear();
 };
 
-void dae::Object::Update()
+void Object::Update()
 {
 	for(auto i : m_pComponents)
 	{
@@ -20,7 +20,7 @@ void dae::Object::Update()
 	}
 }
 
-void dae::Object::Render(float interpolation) const
+void Object::Render(float interpolation) const
 {
 	for(auto i : m_pComponents)
 	{
@@ -28,12 +28,12 @@ void dae::Object::Render(float interpolation) const
 	}
 }
 
-void dae::Object::AddComponent(Component* component)
+void Object::AddComponent(Component* component)
 {
 	m_pComponents.push_back(component);
 }
 
-void dae::Object::SetPosition(float x, float y)
+void Object::SetPosition(float x, float y)
 {
 	m_Transform.SetPosition(x, y);
 }
