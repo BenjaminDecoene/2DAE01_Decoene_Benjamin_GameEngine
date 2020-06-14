@@ -1,33 +1,4 @@
-﻿  pch.cpp
-  Animator.cpp
-  Observer.cpp
-  PhysxComponent.cpp
-  Command.cpp
-  Entity.cpp
-  Font.cpp
-  FPSclock.cpp
-  GameInfo.cpp
-  Object.cpp
-  InputManager.cpp
-  Minigin.cpp
-  Component.cpp
-  PhysxManager.cpp
-  Renderer.cpp
-  ResourceManager.cpp
-  Scene.cpp
-  SceneManager.cpp
-  AudioManager.cpp
-  SpriteComponent2D.cpp
-  State.cpp
-  Compiling...
-  StateMachine.cpp
-  Subject.cpp
-  TextObject.cpp
-  Texture2D.cpp
-  TextureComponent2D.cpp
-  Time.cpp
-  Transform.cpp
-  Utils.cpp
+﻿  Scene.cpp
   Minigin.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\Win32\Release\Minigin.lib
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2\lib\x86\SDL2.dll
   1 File(s) copied

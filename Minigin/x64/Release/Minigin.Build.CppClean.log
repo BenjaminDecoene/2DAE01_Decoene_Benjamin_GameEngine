@@ -1,6 +1,4 @@
-d:\school\2dae\programming4\gameengine_git\minigin\x64\release\minigin.pch
 d:\school\2dae\programming4\gameengine_git\minigin\x64\release\minigin.pdb
-d:\school\2dae\programming4\gameengine_git\minigin\x64\release\pch.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\release\transform.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\release\time.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\release\texturecomponent2d.obj
@@ -19,6 +17,19 @@ d:\school\2dae\programming4\gameengine_git\minigin\x64\release\fpsclock.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\release\font.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\release\entity.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\release\boxcollidercomponent.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\minigin.pch
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\pch.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\state.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\spritecomponent2d.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\physxmanager.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\physxcomponent.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\observer.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\command.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\audiomanager.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\animator.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\utils.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\subject.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\release\statemachine.obj
 d:\school\2dae\programming4\gameengine_git\x64\release\minigin.lib
 d:\school\2dae\programming4\gameengine_git\minigin\x64\release\minigin.tlog\cl.command.1.tlog
 d:\school\2dae\programming4\gameengine_git\minigin\x64\release\minigin.tlog\cl.read.1.tlog

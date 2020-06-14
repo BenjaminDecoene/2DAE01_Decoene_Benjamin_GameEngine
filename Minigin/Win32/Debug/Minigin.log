@@ -1,36 +1,4 @@
-﻿  pch.cpp
-  Animator.cpp
-  AudioManager.cpp
-  Command.cpp
-  Component.cpp
-  Entity.cpp
-  FPSclock.cpp
-  Font.cpp
-  GameInfo.cpp
-  InputManager.cpp
-  Minigin.cpp
-  Object.cpp
-  Observer.cpp
-  PhysxComponent.cpp
-  PhysxManager.cpp
-  Renderer.cpp
-  ResourceManager.cpp
-  Scene.cpp
-  SceneManager.cpp
-  SpriteComponent2D.cpp
-  State.cpp
-  Generating Code...
-  Compiling...
-  StateMachine.cpp
-  Subject.cpp
-  TextObject.cpp
-  Texture2D.cpp
-  TextureComponent2D.cpp
-  Time.cpp
-  Transform.cpp
-  Utils.cpp
-  Generating Code...
-  Minigin.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\Win32\Debug\Minigin.lib
+﻿  Minigin.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\Win32\Debug\Minigin.lib
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2\lib\x86\SDL2.dll
   1 File(s) copied
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_image\lib\x86\libjpeg-9.dll
@@ -43,5 +11,8 @@
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_ttf\lib\x86\libfreetype-6.dll
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_ttf\lib\x86\SDL2_ttf.dll
   2 File(s) copied
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\fmod\lib\fmod.dll
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\fmod\lib\fmod64.dll
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\fmod\lib\fmodL.dll
-  1 File(s) copied
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\fmod\lib\fmodL64.dll
+  4 File(s) copied

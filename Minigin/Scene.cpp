@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Object.h"
-#include "TextureComponent2D.h"
-#include "PhysxComponent.h"
 
 unsigned int Scene::m_IdCounter = 0;
 
@@ -24,12 +22,6 @@ Scene::Scene(const std::string& name)
 	b2PolygonShape groundBox;
 	groundBox.SetAsBox(windowSize.x, 0.0f / ppm);
 	groundBody->CreateFixture(&groundBox, 0.0f);
-
-	//auto gameObject = new Object();
-	//gameObject->AddComponent(new TextureComponent2D(gameObject, "brick.jpg", {windowSize.x, 50}));
-	////gameObject->SetVelocity({0,5,0});
-	//gameObject->AddComponent(new PhysxComponent(gameObject, GetWorld(), {0, 10}, {windowSize.x,5}));
-	//Add(gameObject);
 }
 
 Scene::~Scene() = default;
@@ -46,7 +38,7 @@ void Scene::Update()
 
 	const size_t nrObjects{m_Objects.size()};
 	
-	for(int i{}; i < nrObjects; i++)
+	for(size_t i{}; i < nrObjects; i++)
 	{
 		m_Objects[i]->Update();
 	}

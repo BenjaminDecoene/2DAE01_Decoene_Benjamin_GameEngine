@@ -1,7 +1,11 @@
-﻿Minigin.lib(AudioManager.obj) : error LNK2001: unresolved external symbol FMOD_System_Create
-Minigin.lib(AudioManager.obj) : error LNK2001: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::init(int,unsigned int,void *)" (?init@System@FMOD@@QEAA?AW4FMOD_RESULT@@HIPEAX@Z)
-Minigin.lib(AudioManager.obj) : error LNK2001: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::update(void)" (?update@System@FMOD@@QEAA?AW4FMOD_RESULT@@XZ)
-Minigin.lib(AudioManager.obj) : error LNK2001: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::createSound(char const *,unsigned int,struct FMOD_CREATESOUNDEXINFO *,class FMOD::Sound * *)" (?createSound@System@FMOD@@QEAA?AW4FMOD_RESULT@@PEBDIPEAUFMOD_CREATESOUNDEXINFO@@PEAPEAVSound@2@@Z)
-Minigin.lib(AudioManager.obj) : error LNK2001: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::playSound(class FMOD::Sound *,class FMOD::ChannelGroup *,bool,class FMOD::Channel * *)" (?playSound@System@FMOD@@QEAA?AW4FMOD_RESULT@@PEAVSound@2@PEAVChannelGroup@2@_NPEAPEAVChannel@2@@Z)
-Minigin.lib(AudioManager.obj) : error LNK2001: unresolved external symbol "public: enum FMOD_RESULT __cdecl FMOD::System::release(void)" (?release@System@FMOD@@QEAA?AW4FMOD_RESULT@@XZ)
-D:\school\2DAE\programming4\GameEngine_Git\x64\Release\BubbleBobble.exe : fatal error LNK1120: 6 unresolved externals
+﻿  BubbleBobble.cpp
+  Bullet.cpp
+  Main.cpp
+  Player.cpp
+  TestScene.cpp
+  Wall.cpp
+  Generating code
+  Previous IOBJ not found, fall back to full compilation.
+  All 1033 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Game.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\x64\Release\BubbleBobble.exe

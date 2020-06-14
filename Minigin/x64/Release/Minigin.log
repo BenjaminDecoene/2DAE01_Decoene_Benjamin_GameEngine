@@ -1,26 +1,25 @@
 ﻿  pch.cpp
   Animator.cpp
-  AudioManager.cpp
-  Command.cpp
-  Component.cpp
-  Entity.cpp
-  FPSclock.cpp
-  Font.cpp
-  GameInfo.cpp
-  InputManager.cpp
-  Minigin.cpp
-  Object.cpp
   Observer.cpp
   PhysxComponent.cpp
-  PhysxManager.cpp
+  Command.cpp
+  Entity.cpp
+  Font.cpp
+  FPSclock.cpp
+  GameInfo.cpp
+  Object.cpp
+  InputManager.cpp
+  Minigin.cpp
+  Component.cpp
   Renderer.cpp
   ResourceManager.cpp
   Scene.cpp
   SceneManager.cpp
+  AudioManager.cpp
   SpriteComponent2D.cpp
   State.cpp
-  Compiling...
   StateMachine.cpp
+  Compiling...
   Subject.cpp
   TextObject.cpp
   Texture2D.cpp
