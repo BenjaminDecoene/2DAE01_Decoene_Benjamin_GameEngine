@@ -12,6 +12,9 @@ SpriteComponent2D::SpriteComponent2D(Object* parent, const std::string& file, co
 	,m_StartFrame()
 	,m_EndFrame(rows * columns)
 	,m_ElapsedTime()
+	,m_Loop(false)
+	,m_Active(false)
+	,m_IsDone(true)
 {
 	int w;
 	int h;
@@ -30,12 +33,24 @@ SpriteComponent2D::SpriteComponent2D(Object* parent, const std::string& file, co
 
 void SpriteComponent2D::Update()
 {
-	m_ElapsedTime += GameInfo::GetInstance().GetMsPerFrame() / 1000.f;
-	m_CurrentFrame = m_StartFrame + int(m_ElapsedTime * m_Fps) % (m_EndFrame - m_StartFrame);
+	if(m_Active)
+	{
+		if(!m_Loop && m_CurrentFrame == m_EndFrame - 1)
+		{
+			m_IsDone = true;
+			return;
+		}
+		
+		m_ElapsedTime += GameInfo::GetInstance().GetMsPerFrame() / 1000.f;
+		m_CurrentFrame = m_StartFrame + int(m_ElapsedTime * m_Fps) % (m_EndFrame - m_StartFrame);
+	}
 }
 
 void SpriteComponent2D::Render(float) const
 {
+	if(!m_Active)
+		return;
+	
 	const b2Vec2 parentPos{ m_pParent->GetTransform().GetPosition() };
 	const float parentRot{ m_pParent->GetRotation() };
 	const float ppm = GameInfo::GetInstance().GetPPM();
@@ -55,4 +70,34 @@ void SpriteComponent2D::Render(float) const
 	src.h = int(tile.y);
 	
 	Renderer::GetInstance().RenderTexture(*m_pTexture, parentPos.x - m_Dimensions.x / 2, GameInfo::GetWindowSize().y - parentPos.y - m_Dimensions.y / 2, src, m_Dimensions.x, m_Dimensions.y, parentRot);
+}
+
+void SpriteComponent2D::PlayOnce()
+{
+	if(!m_IsDone)
+		return;
+	
+	m_Active = true;
+	m_Loop = false;
+	m_CurrentFrame = m_StartFrame;
+	m_ElapsedTime = 0.f;
+	m_IsDone = false;
+}
+
+void SpriteComponent2D::PlayLoop()
+{
+	
+	m_Active = true;
+	m_Loop = true;
+	m_CurrentFrame = m_StartFrame;
+	m_ElapsedTime = 0.f;
+	m_IsDone = false;
+}
+
+void SpriteComponent2D::Interupt()
+{
+	m_Active = false;
+	m_CurrentFrame = m_StartFrame;
+	m_ElapsedTime = 0.f;
+	m_IsDone = true;
 }

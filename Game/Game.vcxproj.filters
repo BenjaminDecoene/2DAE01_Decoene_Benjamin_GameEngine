@@ -39,6 +39,9 @@
     <ClCompile Include="Wall.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestScene.h">
@@ -51,6 +54,9 @@
       <Filter>Source Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Wall.h">
+      <Filter>Source Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
       <Filter>Source Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>

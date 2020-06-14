@@ -3,27 +3,17 @@
 #include "ResourceManager.h"
 #include "TextureComponent2D.h"
 #include "PhysxComponent.h"
-#include "SpriteComponent2D.h"
 #include "AudioManager.h"
 #include "Player.h"
 #include "Wall.h"
+#include "Bullet.h"
+#include "SceneManager.h"
 
 TestScene::TestScene(const std::string& name)
 	:Scene(name)
 {
-	AudioManager::GetInstance().LoadSound("death.mp3");
-
-	//	make the background
-	auto background = new Object();
-	background->SetPosition(GameInfo::GetWindowSize().x / 2, GameInfo::GetWindowSize().y / 2);
-	background->AddComponent(new TextureComponent2D(background, "background.jpg", GameInfo::GetWindowSize()));
-	Add(background);
-
 	//	make the player
 	auto player = new Player({75.f, 500.f});
-	
-	//	make sprite component
-	const auto sprite = new SpriteComponent2D(player, "BBSprites/Sprites0.png", {100, 100}, 16, 8, 8, 0, 16);
 
 	//	make physx component
 	const float ppm = GameInfo::GetInstance().GetPPM();
@@ -34,25 +24,66 @@ TestScene::TestScene(const std::string& name)
 	auto physx = new PhysxComponent(player, GetWorld(), bodyDef);
 	
 	b2PolygonShape boxShape;
-	boxShape.SetAsBox((50 / ppm), (50  / ppm));
+	boxShape.SetAsBox((35 / ppm), (35  / ppm));
 	const auto fixtureDef = new b2FixtureDef();
 	fixtureDef->shape = &boxShape;
-	fixtureDef->density = 100.0f;
+	fixtureDef->density = 1.0f;
 	fixtureDef->friction = 0.7f;
 	fixtureDef->restitution = 0.3f;
 
 	physx->AddFixture(fixtureDef);
 
-	
-	player->Init(sprite, physx, 10);
+	player->Init(physx);
 	
 	Add(player);
 
-	AudioManager::GetInstance().AddEvent("PlayerUp", [](){AudioManager::GetInstance().PlaySound("death.mp3");});
+	const auto windowSize = GameInfo::GetInstance().GetWindowSize();
+	
+	//	make walls for level
+	auto wall0 = new Wall({10, windowSize.y / 2});
 
-	//	make some walls
-	auto wall = new Wall({200, 50});
+	wall0->Init("brick.jpg", {30, windowSize.y}, this);
+	Add(wall0);
 
-	wall->Init("brick.jpg", {400, 100}, this);
-	Add(wall);
+	//	make walls for level
+	auto wall1 = new Wall({windowSize.x - 10, windowSize.y / 2});
+
+	wall1->Init("brick.jpg", {30, windowSize.y}, this);
+	Add(wall1);
+
+	auto wall2 = new Wall({windowSize.x / 2, windowSize.y - 15});
+
+	wall2->Init("brick.jpg", {windowSize.x, 30}, this);
+	Add(wall2);
+
+	auto wall3 = new Wall({150, 15});
+
+	wall3->Init("brick.jpg", {300, 30}, this);
+	Add(wall3);
+
+	//	walls that should only collide when player is falling
+	auto wall4 = new Wall({windowSize.x - 150, 15});
+
+	wall4->Init("brick.jpg", {300, 30}, this);
+	Add(wall4);
+
+	auto wall5 = new Wall({250, 200});
+
+	wall5->Init("brick.jpg", {150, 30}, this);
+	Add(wall5);
+
+	auto wall6 = new Wall({550, 200});
+
+	wall6->Init("brick.jpg", {150, 30}, this);
+	Add(wall6);
+
+	auto wall7 = new Wall({400, 350});
+
+	wall7->Init("brick.jpg", {500, 30}, this);
+	Add(wall7);
+
+	auto wall8 = new Wall({400, 500});
+
+	wall8->Init("brick.jpg", {500, 30}, this);
+	Add(wall8);
 }

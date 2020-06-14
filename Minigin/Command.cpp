@@ -15,37 +15,37 @@ void CommandMoveToRight::Pressed()
 }
 
 CommandFunction::CommandFunction(std::function<void()> pressedFunction, std::function<void()> onPressedFunction, std::function<void()> onIdleFunction)
-	:m_pressedFunction(pressedFunction)
-	,m_onIdleFunction(onIdleFunction)
-	,m_onPressedFunction(onPressedFunction)
+	:m_PressedFunction(pressedFunction)
+	,m_OnIdleFunction(onIdleFunction)
+	,m_OnPressedFunction(onPressedFunction)
 {
 }
 
 void CommandFunction::Pressed()
 {
-	if(!m_onPressedFunction)
+	if(!m_PressedFunction)
 		return;
 
-	m_onPressedFunction();
+	m_PressedFunction();
 	std::cout << "ButtonPressed" << std::endl;
 }
 
 void CommandFunction::Released()
 {
-	if(!m_onIdleFunction)
+	if(!m_OnIdleFunction)
 		return;
 
-	m_onIdleFunction();
+	m_OnIdleFunction();
 	std::cout << "ButtonOnIdle" << std::endl;
 
 }
 
 void CommandFunction::OnPressed()
 {
-	if(!m_onPressedFunction)
+	if(!m_OnPressedFunction)
 		return;
 	
-	m_onPressedFunction();
+	m_OnPressedFunction();
 	std::cout << "ButtonOnPressed" << std::endl;
 
 }

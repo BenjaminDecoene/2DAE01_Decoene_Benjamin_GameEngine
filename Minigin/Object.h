@@ -16,13 +16,14 @@ public:
 	
 	//	Setters, getters
 	template<typename T>
-	T* GetComponent()
+	T* GetComponent() const
 	{
 		for(Component* i : m_pComponents)
 		{
-			if(dynamic_cast<T*>(i))
+			auto component = dynamic_cast<T*>(i);
+			if(component)
 			{
-				return dynamic_cast<T*>(i);
+				return component;
 			}
 		}
 		return nullptr;

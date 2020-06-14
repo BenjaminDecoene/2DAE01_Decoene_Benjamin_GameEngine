@@ -83,7 +83,7 @@ void dae::Minigin::Run()
 		lag += elapsed;
 	
 		//	process input
-		input.ProcessInput();
+		doContinue = input.ProcessInput();
 	
 		//	if frame takes to long, update till up to date before rendering
 		while(lag.count() >= MsPerFrame)

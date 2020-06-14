@@ -24,6 +24,9 @@
     <Filter Include="Bengine\Observer Pattern">
       <UniqueIdentifier>{a649af0d-a7da-4f5a-b8fb-4f01d43b3f9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Bengine\Helpers\StateMachine">
+      <UniqueIdentifier>{17e42c40-07dc-4a3f-8068-485c04c5f4b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextureComponent2D.h">
@@ -92,9 +95,6 @@
     <ClInclude Include="ObjectComponents.h">
       <Filter>Bengine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="PhysxManager.h">
-      <Filter>Bengine</Filter>
-    </ClInclude>
     <ClInclude Include="SpriteComponent2D.h">
       <Filter>Bengine\Components</Filter>
     </ClInclude>
@@ -112,6 +112,15 @@
     </ClInclude>
     <ClInclude Include="Observer.h">
       <Filter>Bengine\Observer Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Bengine\Helpers\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Bengine\Helpers\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>Bengine\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -169,9 +178,6 @@
     <ClCompile Include="GameInfo.cpp">
       <Filter>Bengine</Filter>
     </ClCompile>
-    <ClCompile Include="PhysxManager.cpp">
-      <Filter>Bengine</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteComponent2D.cpp">
       <Filter>Bengine\Components</Filter>
     </ClCompile>
@@ -192,6 +198,15 @@
     </ClCompile>
     <ClCompile Include="Subject.cpp">
       <Filter>Bengine\Observer Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Bengine\Helpers\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Bengine\Helpers\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>Bengine\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

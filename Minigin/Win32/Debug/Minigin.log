@@ -1,2 +1,47 @@
 ﻿  pch.cpp
-D:\school\2DAE\programming4\GameEngine_Git\Minigin\pch.cpp(2,1): error C2857: '#include' statement specified with the /YcMiniginPCH.h command-line option was not found in the source file
+  Animator.cpp
+  AudioManager.cpp
+  Command.cpp
+  Component.cpp
+  Entity.cpp
+  FPSclock.cpp
+  Font.cpp
+  GameInfo.cpp
+  InputManager.cpp
+  Minigin.cpp
+  Object.cpp
+  Observer.cpp
+  PhysxComponent.cpp
+  PhysxManager.cpp
+  Renderer.cpp
+  ResourceManager.cpp
+  Scene.cpp
+  SceneManager.cpp
+  SpriteComponent2D.cpp
+  State.cpp
+  Generating Code...
+  Compiling...
+  StateMachine.cpp
+  Subject.cpp
+  TextObject.cpp
+  Texture2D.cpp
+  TextureComponent2D.cpp
+  Time.cpp
+  Transform.cpp
+  Utils.cpp
+  Generating Code...
+  Minigin.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\Win32\Debug\Minigin.lib
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2\lib\x86\SDL2.dll
+  1 File(s) copied
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_image\lib\x86\libjpeg-9.dll
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_image\lib\x86\libpng16-16.dll
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_image\lib\x86\libtiff-5.dll
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_image\lib\x86\libwebp-7.dll
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_image\lib\x86\SDL2_image.dll
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_image\lib\x86\zlib1.dll
+  6 File(s) copied
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_ttf\lib\x86\libfreetype-6.dll
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_ttf\lib\x86\SDL2_ttf.dll
+  2 File(s) copied
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\fmod\lib\fmodL.dll
+  1 File(s) copied

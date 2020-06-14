@@ -26,7 +26,7 @@ void Wall::Init(const std::string& texture, const b2Vec2& dimensions, Scene* sce
 	const auto fixtureDef = new b2FixtureDef();
 	fixtureDef->shape = &boxShape;
 	fixtureDef->density = 1.0f;
-	fixtureDef->friction = 0.7f;
+	fixtureDef->friction = 0.3f;
 	fixtureDef->restitution = 0.3f;
 
 	physx->AddFixture(fixtureDef);

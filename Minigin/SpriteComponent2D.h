@@ -11,6 +11,11 @@ public:
 	
 	void Update() override;
 	void Render(float interpolation) const override;
+
+	void PlayOnce();
+	void PlayLoop();
+	void Interupt();
+	bool GetIsDone() const { return m_IsDone; };
 private:
 	b2Vec2 m_TextureSize;
 	UINT m_Rows;
@@ -20,4 +25,7 @@ private:
 	UINT m_CurrentFrame;
 	UINT m_StartFrame;
 	UINT m_EndFrame;
+	bool m_Active;
+	bool m_Loop;
+	bool m_IsDone;
 };

@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BubbleBobble.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TestScene.cpp" />
@@ -168,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BubbleBobble.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="Wall.h" />

@@ -1,5 +1,8 @@
 ﻿  pch.cpp
-  BoxColliderComponent.cpp
+  Animator.cpp
+  Observer.cpp
+  PhysxComponent.cpp
+  Command.cpp
   Entity.cpp
   Font.cpp
   FPSclock.cpp
@@ -8,15 +11,23 @@
   InputManager.cpp
   Minigin.cpp
   Component.cpp
+  PhysxManager.cpp
   Renderer.cpp
   ResourceManager.cpp
   Scene.cpp
   SceneManager.cpp
+  AudioManager.cpp
+  SpriteComponent2D.cpp
+  State.cpp
+  Compiling...
+  StateMachine.cpp
+  Subject.cpp
   TextObject.cpp
   Texture2D.cpp
   TextureComponent2D.cpp
   Time.cpp
   Transform.cpp
+  Utils.cpp
   Minigin.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\Win32\Release\Minigin.lib
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2\lib\x86\SDL2.dll
   1 File(s) copied
@@ -30,3 +41,5 @@
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_ttf\lib\x86\libfreetype-6.dll
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2_ttf\lib\x86\SDL2_ttf.dll
   2 File(s) copied
+  D:\school\2DAE\programming4\GameEngine_Git\3rdParty\fmod\lib\fmod.dll
+  1 File(s) copied

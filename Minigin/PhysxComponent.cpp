@@ -23,9 +23,8 @@ void PhysxComponent::Update()
 	m_pParent->SetRotation(-float(rot * 180 / M_PI));
 }
 
-void PhysxComponent::Render(float interpolation) const
+void PhysxComponent::Render(float) const
 {
-	UNREFERENCED_PARAMETER(interpolation);
 
 	//	Draw the fixtures
 	
@@ -87,4 +86,24 @@ void PhysxComponent::SetDesiredVelocity(const b2Vec2& desiredVelocity) const
 	const b2Vec2 impulse = m_Body->GetMass() * (GameInfo::GetMsPerFrame() / 1000.f) * velChange;
 
 	m_Body->ApplyLinearImpulse(impulse, m_Body->GetWorldCenter(),true);
+}
+
+void PhysxComponent::ApplyImpulse(const b2Vec2& force) const
+{
+	m_Body->ApplyLinearImpulseToCenter(force, true);
+}
+
+void PhysxComponent::SetFixedRotation(bool fixed) const
+{
+	m_Body->SetFixedRotation(fixed);
+}
+
+bool PhysxComponent::IsTouching() const
+{
+	for(b2ContactEdge* edge = m_Body->GetContactList(); edge; edge = edge->next)
+	{
+		if(edge->contact->IsTouching())
+			return true;
+	}
+	return false;
 }

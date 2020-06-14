@@ -43,10 +43,12 @@ void Scene::Update()
 {
 	//	update the world
 	m_World->Step(GameInfo::GetInstance().GetMsPerFrame() / 1000.f, 6, 2);
+
+	const size_t nrObjects{m_Objects.size()};
 	
-	for(auto& object : m_Objects)
+	for(int i{}; i < nrObjects; i++)
 	{
-		object->Update();
+		m_Objects[i]->Update();
 	}
 	
 }

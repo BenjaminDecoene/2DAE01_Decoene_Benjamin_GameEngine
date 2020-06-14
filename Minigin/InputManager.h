@@ -13,6 +13,7 @@ enum class ControllerButton
 	keyA,
 	KeyS,
 	KeyD,
+	Key_Space
 	//...
 };
 
@@ -33,7 +34,7 @@ struct Button
 class InputManager : public Singleton<InputManager>
 {
 public:
-	void ProcessInput();
+	bool ProcessInput();
 	bool IsPressed(ControllerButton button) const;
 	void BindCommand(ControllerButton button, std::unique_ptr<Command> command);
 private:

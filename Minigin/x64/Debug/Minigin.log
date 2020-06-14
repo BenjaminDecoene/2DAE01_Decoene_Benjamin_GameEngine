@@ -1,5 +1,14 @@
-﻿  Component.cpp
+﻿  AudioManager.cpp
+  Command.cpp
+  Entity.cpp
+  Minigin.cpp
+  Object.cpp
+  Observer.cpp
   PhysxComponent.cpp
+  Scene.cpp
+  SpriteComponent2D.cpp
+  Subject.cpp
+  TextureComponent2D.cpp
   Generating Code...
   Minigin.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\x64\Debug\Minigin.lib
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2\lib\x64\SDL2.dll

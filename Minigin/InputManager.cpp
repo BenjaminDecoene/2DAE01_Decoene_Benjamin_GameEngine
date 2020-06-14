@@ -1,13 +1,24 @@
 #include "pch.h"
 #include "InputManager.h"
 
-void InputManager::ProcessInput()
+bool InputManager::ProcessInput()
 {
+	//	check if the user closes the program
+
+	SDL_Event Events;
+	
+	SDL_PollEvent(&Events);
+	
+    if (Events.type == SDL_QUIT)
+        return false;
+   
+	
 	//	controller support
 	ZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));
 	XInputGetState(0, &m_CurrentState);
 	
 	HandleInput();
+	return true;
 }
 
 bool InputManager::IsPressed(ControllerButton button) const
@@ -36,6 +47,8 @@ bool InputManager::IsPressed(ControllerButton button) const
 		return state[SDL_SCANCODE_S];
 	case ControllerButton::KeyD:
 		return state[SDL_SCANCODE_D];
+	case ControllerButton::Key_Space:
+		return state[SDL_SCANCODE_SPACE];
 	default: return false;
 	}
 }
@@ -99,6 +112,6 @@ void InputManager::ExecuteButtonState() const
 
 InputManager::InputManager()
 {
-	m_pButtons.resize(8);
+	m_pButtons.resize(9);
 }
 

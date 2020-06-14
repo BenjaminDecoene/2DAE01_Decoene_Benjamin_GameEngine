@@ -49,7 +49,7 @@ public:
 	void Released() override;
 	void OnPressed() override;
 private:
-	std::function<void()> m_pressedFunction;
-	std::function<void()> m_onIdleFunction;
-	std::function<void()> m_onPressedFunction;
+	std::function<void()> m_PressedFunction;
+	std::function<void()> m_OnIdleFunction;
+	std::function<void()> m_OnPressedFunction;
 };

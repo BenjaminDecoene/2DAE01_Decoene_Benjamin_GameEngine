@@ -15,7 +15,6 @@ public:
 
 	void RemoveObserver(Observer* observer);
 	
-protected:
 	void Notify(const Object& actor, const std::string& event);
 private:
 	const unsigned int m_MaxObservers = 10;
