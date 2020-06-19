@@ -2,6 +2,7 @@ d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.pch
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.pdb
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.idb
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\pch.obj
+d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\statemachine.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\state.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\spritecomponent2d.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\audiomanager.obj
@@ -9,7 +10,6 @@ d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\scenemanager.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\scene.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\resourcemanager.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\renderer.obj
-d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\physxmanager.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\component.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\inputmanager.obj
@@ -29,7 +29,6 @@ d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\texturecomponent2d.
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\texture2d.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\textobject.obj
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\subject.obj
-d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\statemachine.obj
 d:\school\2dae\programming4\gameengine_git\x64\debug\minigin.lib
 d:\school\2dae\programming4\gameengine_git\x64\debug\minigin.pdb
 d:\school\2dae\programming4\gameengine_git\minigin\x64\debug\minigin.tlog\cl.command.1.tlog

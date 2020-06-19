@@ -8,7 +8,12 @@ Bullet::Bullet(const b2Vec2& pos, bool goRight, Scene* scene)
 	:m_GoRight(goRight)
 {
 	//	set pos
-	SetPosition(pos.x, pos.y);
+	if(goRight)
+	{
+		SetPosition(pos.x + 10, pos.y);		
+	}
+	else
+		SetPosition(pos.x - 10, pos.y);	
 	
 	//	make sprite
 	const auto sprite = new SpriteComponent2D(this, "BBSprites/char_shoot.png", {40, 40}, 5, 8, 16, 32, 40);
@@ -27,24 +32,26 @@ Bullet::Bullet(const b2Vec2& pos, bool goRight, Scene* scene)
 	shape.m_radius = 20 / ppm;
 	const auto fixtureDef = new b2FixtureDef();
 	fixtureDef->shape = &shape;
+	fixtureDef->density = 1.f;
 
 	physx->AddFixture(fixtureDef);
 
-	AddComponent(physx);
+	physx->SetFixedRotation(true);
 
-	
+	AddComponent(physx);
 }
 
 void Bullet::Update()
 {
 	Object::Update();
-	auto physx = GetComponent<PhysxComponent>();
+	
+	const auto physx = GetComponent<PhysxComponent>();
 
 	//	set velocity
 	if(m_GoRight)
-		physx->SetDesiredVelocity({10, 0});
+		physx->SetDesiredVelocity({10, 9.81f});
 	else
-		physx->SetDesiredVelocity({-10, 0});
+		physx->SetDesiredVelocity({-10, 9.81f});
 
 	////	if touched delete
 	//if(physx->IsTouching())

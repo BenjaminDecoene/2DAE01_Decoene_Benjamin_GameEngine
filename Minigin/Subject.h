@@ -21,4 +21,3 @@ private:
 	std::vector<Observer*>m_pObservers;
 	int m_NrObservers;
 };
-

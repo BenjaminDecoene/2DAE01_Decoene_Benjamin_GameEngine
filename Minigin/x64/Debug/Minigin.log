@@ -1,14 +1,33 @@
-﻿  AudioManager.cpp
-  Command.cpp
-  Entity.cpp
-  Minigin.cpp
-  Object.cpp
+﻿  pch.cpp
+  Animator.cpp
   Observer.cpp
   PhysxComponent.cpp
+  Command.cpp
+  Entity.cpp
+  Font.cpp
+  FPSclock.cpp
+  GameInfo.cpp
+  Object.cpp
+  InputManager.cpp
+  Minigin.cpp
+  Component.cpp
+  Renderer.cpp
+  ResourceManager.cpp
   Scene.cpp
+  SceneManager.cpp
+  AudioManager.cpp
   SpriteComponent2D.cpp
+  State.cpp
+  StateMachine.cpp
+  Generating Code...
+  Compiling...
   Subject.cpp
+  TextObject.cpp
+  Texture2D.cpp
   TextureComponent2D.cpp
+  Time.cpp
+  Transform.cpp
+  Utils.cpp
   Generating Code...
   Minigin.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\x64\Debug\Minigin.lib
   D:\school\2DAE\programming4\GameEngine_Git\3rdParty\SDL2\lib\x64\SDL2.dll
