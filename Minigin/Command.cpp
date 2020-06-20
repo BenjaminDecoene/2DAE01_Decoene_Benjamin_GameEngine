@@ -1,18 +1,17 @@
 #include "pch.h"
 #include "Command.h"
-#include "Entity.h"
 
-CommandMoveToRight::CommandMoveToRight(Entity* entity, float speed)
-	:m_Entity(entity)
-	,m_Speed(speed)
-{
-}
+//CommandMoveToRight::CommandMoveToRight(Object* object, float speed)
+//	:m_Object(object)
+//	,m_Speed(speed)
+//{
+//}
 
-void CommandMoveToRight::Pressed()
-{
-	m_Entity->SetVelocity(b2Vec2(m_Speed, 0));
-	std::cout << "move right" << std::endl;
-}
+//void CommandMoveToRight::Pressed()
+//{
+//	m_Object->SetVelocity(b2Vec2(m_Speed, 0));
+//	std::cout << "move right" << std::endl;
+//}
 
 CommandFunction::CommandFunction(std::function<void()> pressedFunction, std::function<void()> onPressedFunction, std::function<void()> onIdleFunction)
 	:m_PressedFunction(pressedFunction)

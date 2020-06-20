@@ -1,8 +1,2 @@
-﻿  BubbleBobble.cpp
-  Bullet.cpp
-  Main.cpp
-  Player.cpp
-  TestScene.cpp
-  Wall.cpp
-  Generating Code...
+﻿  TestScene.cpp
   Game.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\x64\Debug\BubbleBobble.exe

@@ -83,9 +83,6 @@
     <ClInclude Include="GameInfo.h">
       <Filter>Bengine</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Bengine\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Bengine\Objects</Filter>
     </ClInclude>
@@ -165,9 +162,6 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Bengine</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Bengine\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>Bengine\Objects</Filter>

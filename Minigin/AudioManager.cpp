@@ -33,9 +33,12 @@ void AudioManager::Update()
 void AudioManager::LoadSound(const std::string& name)
 {
 	//	create the sound and push it in the vector
-	FMOD::Sound* sound;
-	const FMOD_RESULT result = m_pSystem->createSound((m_DataPath + name).c_str(), FMOD_DEFAULT, NULL, &sound);
-	m_pSounds.push_back(std::make_pair(name, sound));
+	Sound sound{};
+	//	name
+	sound.name = name;
+	//	sound
+	const FMOD_RESULT result = m_pSystem->createSound((m_DataPath + name).c_str(), FMOD_DEFAULT, NULL, &sound.pSound);
+	m_pSounds.push_back(sound);
 	
 	//	check for errors
 	if (result != FMOD_OK)
@@ -52,10 +55,13 @@ void AudioManager::PlaySound(const std::string& name)
 	//	search for the right sound
 	for(auto& sound : m_pSounds)
 	{
-		if(name == sound.first)
+		if(name == sound.name)
 		{
 			//	play sound
-			result = m_pSystem->playSound(sound.second,0, false, 0);
+			result = m_pSystem->playSound(sound.pSound,0, false, &sound.pChannel);
+
+			//	adjust volume
+			sound.pChannel->setVolume(sound.volume);
 			
 			//	check for errors
 			if (result != FMOD_OK)
@@ -68,6 +74,21 @@ void AudioManager::PlaySound(const std::string& name)
 	}
 	
 	std::cout << "Sound not found!" << std::endl;
+}
+
+void AudioManager::SetVolume(const std::string& name, int volume)
+{
+		//	search for the right sound
+	for(auto& sound : m_pSounds)
+	{
+		if(name == sound.name)
+		{
+			int channelIdx{};
+			sound.pChannel->getIndex(&channelIdx);
+			
+			sound.volume = float(volume / 100.f);
+		}
+	}
 }
 
 void AudioManager::AddEvent(const std::string& name, std::function<void()> event)

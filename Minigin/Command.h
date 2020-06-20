@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <functional>
+#include "Object.h"
 
 class Entity;
 
@@ -27,18 +28,18 @@ public:
 	void OnPressed() override {};
 };
 
-class CommandMoveToRight : public Command
-{
-public:
-	CommandMoveToRight(Entity* entity, float speed);
-	
-	void Pressed() override;
-	void Released() override {};
-	void OnPressed() override {};
-private:
-	Entity* m_Entity;
-	float m_Speed;
-};
+//class CommandMoveToRight : public Command
+//{
+//public:
+//	CommandMoveToRight(Object* object, float speed);
+//	
+//	//void Pressed() override;
+//	void Released() override {};
+//	void OnPressed() override {};
+//private:
+//	Object* m_Object;
+//	float m_Speed;
+//};
 
 class CommandFunction : public Command
 {

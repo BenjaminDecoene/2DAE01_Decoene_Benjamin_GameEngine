@@ -1,13 +1,13 @@
 #pragma once
-#include <Entity.h>
 #include "State.h"
 #include "Animator.h"
+#include "Object.h"
 
 class PhysxComponent;
 class SpriteComponent2D;
 class StateMachine;
 
-class Player : public Entity
+class Player : public Object
 {
 public:
 	Player(const b2Vec2& pos);

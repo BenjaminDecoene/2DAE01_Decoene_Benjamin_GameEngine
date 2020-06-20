@@ -20,12 +20,7 @@ Player::Player(const b2Vec2& pos)
 }
 
 void Player::Init(PhysxComponent* physx)
-{
-	//	load sound effect
-	AudioManager::GetInstance().LoadSound("shoot.wav");
-
-	AudioManager::GetInstance().AddEvent("Shoot", [](){AudioManager::GetInstance().PlaySound("shoot.wav");});
-	
+{	
 	//	make sprite components
 	const auto spriteLookRight = new SpriteComponent2D(this, "BBSprites/char_run.png", {70, 70}, 2, 8, 16, 0, 1);
 	m_Animator.SetDefaultSpriteComponent(spriteLookRight);
@@ -80,7 +75,7 @@ void Player::Init(PhysxComponent* physx)
 
 void Player::Update()
 {
-	Entity::Update();
+	Object::Update();
 
 	m_StateMachine->Update();
 	m_Animator.Update();

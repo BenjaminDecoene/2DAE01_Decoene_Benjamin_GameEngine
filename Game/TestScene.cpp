@@ -12,6 +12,13 @@
 TestScene::TestScene(const std::string& name)
 	:Scene(name)
 {
+	//	load sound effect
+	AudioManager::GetInstance().LoadSound("shoot.wav");
+	AudioManager::GetInstance().AddEvent("Shoot", [](){AudioManager::GetInstance().PlaySound("shoot.wav");});
+	AudioManager::GetInstance().LoadSound("theme.mp3");
+	AudioManager::GetInstance().SetVolume("theme.mp3", 50);	
+	AudioManager::GetInstance().PlaySound("theme.mp3");
+	
 	//	make the player
 	auto player = new Player({75.f, 500.f});
 
