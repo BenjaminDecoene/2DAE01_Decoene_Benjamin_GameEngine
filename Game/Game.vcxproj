@@ -23,7 +23,7 @@
     <ProjectGuid>{450E22BB-0B51-4CD2-986B-525011FFD36A}</ProjectGuid>
     <RootNamespace>Game</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>BubbleBobble</ProjectName>
+    <ProjectName>Digger</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,19 +71,19 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\fmod\inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\SDL2_Mixer\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\fmod\inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\SDL2_Mixer\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\fmod\inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\SDL2_Mixer\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\fmod\inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Minigin;$(SolutionDir)3rdParty\SDL2_Mixer\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)$(Platform)\</OutDir>
   </PropertyGroup>
@@ -93,13 +93,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Box2D\include;$(SolutionDir)3rdParty\fmod\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Box2D\include;$(SolutionDir)3rdParty\SDL2_Mixer\include</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Box2D\lib\x64;$(SolutionDir)3rdParty\SDL2\lib\x64;$(SolutionDir)3rdParty\SDL2_image\lib\x64;$(SolutionDir)3rdParty\SDL2_ttf\lib\x64;$(SolutionDir)3rdParty\fmod\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)3rdParty\Box2D\lib\x64\box2d_d.lib;$(SolutionDir)3rdParty\fmod\lib\fmodL64_vc.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;xinput.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Box2D\lib\x64;$(SolutionDir)3rdParty\SDL2\lib\x64;$(SolutionDir)3rdParty\SDL2_image\lib\x64;$(SolutionDir)3rdParty\SDL2_ttf\lib\x64;$(SolutionDir)3rdParty\SDL2_Mixer\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)3rdParty\Box2D\lib\x64\box2d_d.lib;SDL2_mixer.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;xinput.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -108,13 +108,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Box2D\include;$(SolutionDir)3rdParty\fmod\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Box2D\include;$(SolutionDir)3rdParty\SDL2_Mixer\include</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Box2D\lib\x86;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\lib\x86;$(SolutionDir)3rdParty\SDL2_image\lib\x86;$(SolutionDir)3rdParty\SDL2_ttf\lib\x86;$(SolutionDir)3rdParty\fmod\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)3rdParty\Box2D\lib\x86\box2d_d.lib;$(SolutionDir)3rdParty\fmod\lib\fmodL_vc.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;xinput.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Box2D\lib\x86;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\lib\x86;$(SolutionDir)3rdParty\SDL2_image\lib\x86;$(SolutionDir)3rdParty\SDL2_ttf\lib\x86;$(SolutionDir)3rdParty\SDL2_Mixer\lib\x86</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)3rdParty\Box2D\lib\x86\box2d_d.lib;SDL2_mixer.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;xinput.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -125,15 +125,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Box2D\include;$(SolutionDir)3rdParty\fmod\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Box2D\include;$(SolutionDir)3rdParty\SDL2_Mixer\include</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Box2D\lib\x86;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\lib\x86;$(SolutionDir)3rdParty\SDL2_image\lib\x86;$(SolutionDir)3rdParty\SDL2_ttf\lib\x86;$(SolutionDir)3rdParty\fmod\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)3rdParty\Box2D\lib\x86\box2d.lib;$(SolutionDir)3rdParty\fmod\lib\fmod_vc.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;xinput.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Box2D\lib\x86;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\SDL2\lib\x86;$(SolutionDir)3rdParty\SDL2_image\lib\x86;$(SolutionDir)3rdParty\SDL2_ttf\lib\x86;$(SolutionDir)3rdParty\SDL2_Mixer\lib\x86</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)3rdParty\Box2D\lib\x86\box2d.lib;SDL2_mixer.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;xinput.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -144,24 +144,23 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Box2D\include;$(SolutionDir)3rdParty\fmod\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\SDL2_ttf\include;$(SolutionDir)3rdParty\SDL2_image\include;$(SolutionDir)3rdParty\SDL2\include;$(SolutionDir)3rdParty\glm;$(SolutionDir)3rdParty\Box2D\include;$(SolutionDir)3rdParty\SDL2_Mixer\include</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Box2D\lib\x64;$(SolutionDir)3rdParty\SDL2\lib\x64;$(SolutionDir)3rdParty\SDL2_image\lib\x64;$(SolutionDir)3rdParty\SDL2_ttf\lib\x64;$(SolutionDir)3rdParty\fmod\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)3rdParty\Box2D\lib\x64\box2d.lib;$(SolutionDir)3rdParty\fmod\lib\fmod64_vc.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;xinput.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\Box2D\lib\x64;$(SolutionDir)3rdParty\SDL2\lib\x64;$(SolutionDir)3rdParty\SDL2_image\lib\x64;$(SolutionDir)3rdParty\SDL2_ttf\lib\x64;$(SolutionDir)3rdParty\SDL2_Mixer\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)3rdParty\Box2D\lib\x64\box2d.lib;SDL2_mixer.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;xinput.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BubbleBobble.cpp" />
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Commands.cpp" />
+    <ClCompile Include="Digger.cpp" />
+    <ClCompile Include="InGameScene.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="TestScene.cpp" />
-    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Minigin\Minigin.vcxproj">
@@ -169,11 +168,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BubbleBobble.h" />
-    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Commands.h" />
+    <ClInclude Include="Digger.h" />
+    <ClInclude Include="InGameScene.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="TestScene.h" />
-    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

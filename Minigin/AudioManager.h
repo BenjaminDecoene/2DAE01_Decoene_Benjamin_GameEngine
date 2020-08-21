@@ -1,14 +1,14 @@
 #pragma once
-#include <fmod.hpp>
 #include "Observer.h"
 #include <functional>
+#include <SDL_mixer.h>
 
 struct Sound
 {
-	std::string name;
-	FMOD::Sound* pSound;
-	FMOD::Channel* pChannel;
-	float volume = 1.f;
+	//std::string name;
+	//FMOD::Sound* pSound;
+	//FMOD::Channel* pChannel;
+	//float volume = 1.f;
 };
 
 class AudioManager : public Observer, public Singleton<AudioManager>
@@ -24,7 +24,7 @@ public:
 	void Notify(const Object& object, const std::string& event) override;
 private:
 	std::vector<Sound> m_pSounds;
-	FMOD::System* m_pSystem;
+	//FMOD::System* m_pSystem;
 	std::string m_DataPath;
 	std::vector<std::pair<std::string, std::function<void()>>> m_Events;
 

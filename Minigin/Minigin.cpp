@@ -21,7 +21,7 @@ dae::Minigin::Minigin()
 {
 	//	init minigin
 	
-	if (SDL_Init(SDL_INIT_VIDEO) != 0) 
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0) 
 	{
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
 	}
@@ -33,6 +33,13 @@ dae::Minigin::Minigin()
 		int(GameInfo::GetInstance().GetWindowSize().y),
 		SDL_WINDOW_OPENGL
 	);
+
+	//	init mixer
+	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2028) != 0)
+	{
+		throw std::runtime_error(std::string("Mix_OpenAudio Error: ") + SDL_GetError());
+	}
+	
 	if (m_Window == nullptr) 
 	{
 		throw std::runtime_error(std::string("SDL_CreateWindow Error: ") + SDL_GetError());
@@ -56,6 +63,7 @@ void dae::Minigin::Cleanup()
 	Renderer::GetInstance().Destroy();
 	SDL_DestroyWindow(m_Window);
 	m_Window = nullptr;
+	Mix_Quit();
 	SDL_Quit();
 }
 

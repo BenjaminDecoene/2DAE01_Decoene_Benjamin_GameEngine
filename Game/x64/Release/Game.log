@@ -1,7 +1,12 @@
-﻿  Bullet.cpp
+﻿  BubbleBobble.cpp
+  Bullet.cpp
+  Main.cpp
+  Player.cpp
+  TestScene.cpp
+  Wall.cpp
   Generating code
-  1 of 1033 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  49 of 982 functions ( 5.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    87 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Game.vcxproj -> D:\school\2DAE\programming4\GameEngine_Git\x64\BubbleBobble.exe

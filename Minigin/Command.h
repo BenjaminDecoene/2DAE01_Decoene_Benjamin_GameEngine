@@ -3,15 +3,14 @@
 #include <functional>
 #include "Object.h"
 
-class Entity;
 
 class Command
 {
 public:
 	virtual ~Command() = default;
-	virtual void Pressed() = 0;
-	virtual void Released() = 0;
-	virtual void OnPressed() = 0;
+	virtual void Pressed(){}
+	virtual void Released(){}
+	virtual void OnPressed(){}
 };
 
 // example

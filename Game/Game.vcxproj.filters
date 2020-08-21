@@ -27,37 +27,31 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestScene.cpp">
-      <Filter>Source Files\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="BubbleBobble.cpp">
+    <ClCompile Include="Digger.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InGameScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Wall.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files\Objects</Filter>
+    <ClCompile Include="Commands.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TestScene.h">
-      <Filter>Source Files\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="BubbleBobble.h">
+    <ClInclude Include="Digger.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameScene.h">
+      <Filter>Source Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Source Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Wall.h">
-      <Filter>Source Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Source Files\Objects</Filter>
+    <ClInclude Include="Commands.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

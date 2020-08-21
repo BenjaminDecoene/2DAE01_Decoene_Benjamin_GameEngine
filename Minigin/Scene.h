@@ -9,7 +9,7 @@ public:
 	Scene(const std::string& name);
 	void Add(SceneObject* object);
 
-	void Update();
+	virtual void Update();
 	void Render(float interpolation) const;
 	std::string GetName() const { return m_Name; }
 	b2World* GetWorld() const { return m_World; }
