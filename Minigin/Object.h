@@ -13,6 +13,7 @@ public:
 	void Render(float interpolation) const override;
 
 	void AddComponent(Component* component);
+	void RemoveComponent(Component* component);
 	
 	//	Setters, getters
 	template<typename T>

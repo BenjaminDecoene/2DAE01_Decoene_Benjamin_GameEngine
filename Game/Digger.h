@@ -3,7 +3,7 @@ class Digger
 {
 public:
 	Digger();
+	~Digger() = default;
 private:
 	
 };
-

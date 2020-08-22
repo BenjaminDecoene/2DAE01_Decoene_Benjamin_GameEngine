@@ -24,8 +24,6 @@ Scene::Scene(const std::string& name)
 	groundBody->CreateFixture(&groundBox, 0.0f);
 }
 
-Scene::~Scene() = default;
-
 void Scene::Add(SceneObject* object)
 {
 	m_Objects.push_back(object);

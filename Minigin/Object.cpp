@@ -33,6 +33,12 @@ void Object::AddComponent(Component* component)
 	m_pComponents.push_back(component);
 }
 
+void Object::RemoveComponent(Component* component)
+{
+	const auto compIt = std::find(m_pComponents.begin(), m_pComponents.end(), component);
+	m_pComponents.erase(compIt);
+}
+
 void Object::SetPosition(float x, float y)
 {
 	m_Transform.SetPosition(x, y);

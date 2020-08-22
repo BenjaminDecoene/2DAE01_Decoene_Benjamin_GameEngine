@@ -35,10 +35,10 @@ dae::Minigin::Minigin()
 	);
 
 	//	init mixer
-	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2028) != 0)
-	{
-		throw std::runtime_error(std::string("Mix_OpenAudio Error: ") + SDL_GetError());
-	}
+	//if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2028) != 0)
+	//{
+	//	throw std::runtime_error(std::string("Mix_OpenAudio Error: ") + SDL_GetError());
+	//}
 	
 	if (m_Window == nullptr) 
 	{
@@ -49,8 +49,8 @@ dae::Minigin::Minigin()
 
 	//	tell the resource manager where he can find the game data
 	ResourceManager::GetInstance().Init("../Data/");
-	//	tell the audio manager where the audio is stored
-	AudioManager::GetInstance().Init("../Data/Sound/");
+	////	tell the audio manager where the audio is stored
+	//AudioManager::GetInstance().Init("../Data/Sound/");
 }
 
 void dae::Minigin::Init()
@@ -63,7 +63,7 @@ void dae::Minigin::Cleanup()
 	Renderer::GetInstance().Destroy();
 	SDL_DestroyWindow(m_Window);
 	m_Window = nullptr;
-	Mix_Quit();
+	//Mix_Quit();
 	SDL_Quit();
 }
 
@@ -73,7 +73,7 @@ void dae::Minigin::Run()
 	auto& sceneManager = SceneManager::GetInstance();
 	auto& input = InputManager::GetInstance();
 	auto& time = Time::GetInstance();
-	AudioManager::GetInstance().Update();
+	//AudioManager::GetInstance().Update();
 	time.SetMsPerFrame(MsPerFrame);
 	
 	bool doContinue = true;

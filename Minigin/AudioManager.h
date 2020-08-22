@@ -1,7 +1,6 @@
 #pragma once
 #include "Observer.h"
 #include <functional>
-#include <SDL_mixer.h>
 
 struct Sound
 {

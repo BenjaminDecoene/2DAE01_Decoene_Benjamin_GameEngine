@@ -7,6 +7,7 @@ class GameInfo : public Singleton<GameInfo>
 {
 public:
 	static int GetMsPerFrame() { return MsPerFrame; }
+	static float GetElapsedSec() { return MsPerFrame / 1000.f; }
 	static b2Vec2 GetWindowSize() { return m_WindowSize; }
 	static float GetPPM() { return m_PPM; }
 private:

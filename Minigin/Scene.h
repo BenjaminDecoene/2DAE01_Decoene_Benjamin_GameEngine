@@ -14,7 +14,7 @@ public:
 	std::string GetName() const { return m_Name; }
 	b2World* GetWorld() const { return m_World; }
 	
-	virtual ~Scene();
+	virtual ~Scene() = default;
 
 private: 
 	std::string m_Name;
