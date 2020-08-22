@@ -4,16 +4,16 @@
 enum State
 {
 	broken,
-	alive,
+	dirt,
 	emerald
 };
 
 class Tile : public Object
 {
 public:
-	Tile(const b2Vec2& pos);
+	Tile(const b2Vec2& pos, State state);
 
-	void Break();
+	State Break();
 	//	Getters, setters
 	State GetState() const { return m_State; }
 private:

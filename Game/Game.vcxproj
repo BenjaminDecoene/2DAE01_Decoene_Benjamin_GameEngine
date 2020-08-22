@@ -158,6 +158,7 @@
   <ItemGroup>
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="Digger.cpp" />
+    <ClCompile Include="GameStats.cpp" />
     <ClCompile Include="InGameScene.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -172,6 +173,7 @@
   <ItemGroup>
     <ClInclude Include="Commands.h" />
     <ClInclude Include="Digger.h" />
+    <ClInclude Include="GameStats.h" />
     <ClInclude Include="InGameScene.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />

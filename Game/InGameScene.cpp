@@ -4,6 +4,9 @@
 #include "Commands.h"
 #include "Player.h"
 #include "Map.h"
+#include "ResourceManager.h"
+#include "TextObject.h"
+#include "GameStats.h"
 
 InGameScene::InGameScene(const std::string& name)
 	:Scene(name)
@@ -21,4 +24,18 @@ InGameScene::InGameScene(const std::string& name)
 	InputManager::GetInstance().BindCommand(ControllerButton::KeyS, std::make_unique<CommandMoveDown>(m_pPlayer));
 
 	Add(m_pPlayer);
+
+	//	Score
+	const auto scoreFont = ResourceManager::GetInstance().LoadFont("Font/OrangeJuice.ttf", 50);
+	m_pScoreText = new TextObject (std::to_string(GameStats::GetInstance().GetScore()), scoreFont);
+	m_pScoreText->SetPosition(50.f, 0.f);
+
+	Add(m_pScoreText);
+}
+
+void InGameScene::Update()
+{
+	Scene::Update();
+
+	m_pScoreText->SetText(std::to_string(GameStats::GetInstance().GetScore()));
 }
