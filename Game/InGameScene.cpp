@@ -10,12 +10,13 @@
 
 InGameScene::InGameScene(const std::string& name)
 	:Scene(name)
-	,m_pPlayer(new Player({10.f, 10.f}))
+	,m_pPlayer(new Player({100.f, 100.f}))
 	,m_pMap(new Map(m_pPlayer))
 {
 	//	Add the map
 	Add(m_pMap);
 	m_pMap->AddTiles(this);
+	m_pMap->InitBorder(this);
 	
 	//	Bind commands for the player
 	InputManager::GetInstance().BindCommand(ControllerButton::keyA, std::make_unique<CommandMoveLeft>(m_pPlayer));
@@ -24,6 +25,7 @@ InGameScene::InGameScene(const std::string& name)
 	InputManager::GetInstance().BindCommand(ControllerButton::KeyS, std::make_unique<CommandMoveDown>(m_pPlayer));
 
 	Add(m_pPlayer);
+	m_pPlayer->Init(this);
 
 	//	Score
 	const auto scoreFont = ResourceManager::GetInstance().LoadFont("Font/OrangeJuice.ttf", 50);

@@ -1,13 +1,15 @@
 #pragma once
 #include "Object.h"
 
+class Scene;
+
 class Player : public Object
 {
 public:
 	Player(const b2Vec2& pos);
 	~Player() = default;
 
-	
+	void Init(Scene* scene);
 	//	Getters setters
 	void SetVelocity(const b2Vec2& velocity) { m_Velocity.v = velocity; }
 	const b2Vec2& GetVelocity() const { return m_Velocity.v; }

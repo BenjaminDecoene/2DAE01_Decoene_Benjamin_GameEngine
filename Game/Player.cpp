@@ -1,15 +1,41 @@
 #include "pch.h"
 #include "Player.h"
 #include "TextureComponent2D.h"
+#include "PhysxComponent.h"
+#include "Scene.h"
 
 Player::Player(const b2Vec2& pos)
 	:Object()
-	,m_Velocity({{0.f, 0.f}, 150.f})
+	,m_Velocity({{0.f, 0.f}, 2.f})
 	,m_DigOffset(10.f)
 {
 	m_Transform.SetPosition(pos);
 
 	AddComponent(new TextureComponent2D(this, "Digger.png", {40, 40}));
+}
+
+void Player::Init(Scene* scene)
+{
+	//	make physx component
+	const float ppm = GameInfo::GetInstance().GetPPM();
+	//	make the body
+	auto bodyDef = new b2BodyDef();
+	bodyDef->type = b2_dynamicBody;
+	bodyDef->gravityScale = 0;
+
+	auto physx = new PhysxComponent(this, scene->GetWorld(), bodyDef);
+
+	b2PolygonShape boxShape;
+	boxShape.SetAsBox((20 / ppm), (20  / ppm));
+	const auto fixtureDef = new b2FixtureDef();
+	fixtureDef->shape = &boxShape;
+	fixtureDef->density = 1.0f;
+	fixtureDef->friction = 0.7f;
+	fixtureDef->restitution = 0.3f;
+
+	physx->AddFixture(fixtureDef);
+	
+	AddComponent(physx);
 }
 
 b2Vec2 Player::GetDigPoint() const
@@ -25,9 +51,7 @@ void Player::Update()
 {
 	Object::Update();
 
-	const auto oldPos = m_Transform.GetPosition();
-	const auto newPos = oldPos + (GameInfo::GetElapsedSec() * m_Velocity.w * m_Velocity.v);
-	m_Transform.SetPosition(newPos);
+	GetComponent<PhysxComponent>()->SetVelocity(m_Velocity.w * m_Velocity.v);
 	
 	UpdateRotation();
 }

@@ -11,6 +11,7 @@ public:
 	Map(Player* player);
 	~Map();
 
+	void InitBorder(Scene* scene);
 	//	Getters setters
 	void AddTiles(Scene* scene);
 private:

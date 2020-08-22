@@ -6,21 +6,25 @@
 
 PhysxComponent::PhysxComponent(Object* parent, b2World* world, b2BodyDef* body)
 	:Component(parent)
+	,m_FixedToParent(true)
 {
 	const float ppm = GameInfo::GetInstance().GetPPM();
 	//	make the body
 	const auto parentPos = parent->GetTransform().GetPosition();
-	body->position.Set(parentPos.x / ppm, parentPos.y / ppm);
+	body->position.Set((parentPos.x + body->position.x) / ppm, (parentPos.y + body->position.y) / ppm);
 	m_Body = world->CreateBody(body);
 }
 
 void PhysxComponent::Update()
 {
 	//	link the physics to the parent
-	const auto pos{ m_Body->GetPosition() };
-	const auto rot{ m_Body->GetAngle() };
-	m_pParent->SetPosition(pos.x * GameInfo::GetInstance().GetPPM(), pos.y * GameInfo::GetInstance().GetPPM());
-	m_pParent->SetRotation(-float(rot * 180 / M_PI));
+	if(m_FixedToParent)
+	{
+		const auto pos{ m_Body->GetPosition() };
+		const auto rot{ m_Body->GetAngle() };
+		m_pParent->SetPosition(pos.x * GameInfo::GetInstance().GetPPM(), pos.y * GameInfo::GetInstance().GetPPM());
+		//m_pParent->SetRotation(-float(rot * 180 / M_PI));
+	}
 }
 
 void PhysxComponent::Render(float) const
@@ -86,6 +90,11 @@ void PhysxComponent::SetDesiredVelocity(const b2Vec2& desiredVelocity) const
 	const b2Vec2 impulse = m_Body->GetMass() * (GameInfo::GetMsPerFrame() / 1000.f) * velChange;
 
 	m_Body->ApplyLinearImpulse(impulse, m_Body->GetWorldCenter(),true);
+}
+
+void PhysxComponent::SetVelocity(const b2Vec2& velocity) const
+{
+	m_Body->SetLinearVelocity(velocity);
 }
 
 void PhysxComponent::ApplyImpulse(const b2Vec2& force) const

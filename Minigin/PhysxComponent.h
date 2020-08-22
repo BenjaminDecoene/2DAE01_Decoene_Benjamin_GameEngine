@@ -17,10 +17,13 @@ public:
 	void AddFixture(b2FixtureDef* fixture);
 
 	void SetDesiredVelocity(const b2Vec2& desiredVelocity) const;
+	void SetVelocity(const b2Vec2& velocity) const;
 	void ApplyImpulse(const b2Vec2& force) const;
 	void SetFixedRotation(bool fixed) const;
 	bool IsTouching() const;
+	void FixedToParent(bool fixed) { m_FixedToParent = fixed; }
 private:
 	b2Body* m_Body = nullptr;
 	std::vector<b2Fixture*> m_Fixtures;
+	bool m_FixedToParent;
 };
