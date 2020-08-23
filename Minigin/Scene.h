@@ -8,6 +8,7 @@ class Scene
 public:
 	Scene(const std::string& name);
 	void Add(SceneObject* object);
+	void Remove(SceneObject* object);
 
 	virtual void Update();
 	void Render(float interpolation) const;

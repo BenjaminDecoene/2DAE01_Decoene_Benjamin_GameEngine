@@ -2,6 +2,7 @@
 #include "Object.h"
 
 class Scene;
+class BulletManager;
 
 class Player : public Object
 {
@@ -10,6 +11,8 @@ public:
 	~Player() = default;
 
 	void Init(Scene* scene);
+	void SetBulletManager(BulletManager* manager) { m_pBulletManager = manager; }
+	void Shoot() const;
 	//	Getters setters
 	void SetVelocity(const b2Vec2& velocity) { m_Velocity.v = velocity; }
 	const b2Vec2& GetVelocity() const { return m_Velocity.v; }
@@ -17,7 +20,8 @@ public:
 private:
 	void Update() override;
 	void UpdateRotation();
-	
+
+	BulletManager* m_pBulletManager;
 	b2Velocity m_Velocity;
 	float m_DigOffset;
 };

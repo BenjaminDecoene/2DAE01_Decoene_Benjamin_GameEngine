@@ -85,3 +85,12 @@ void CommandMoveDown::Released()
 	if(vel.y < -0.9f)
 		m_pPlayer->SetVelocity({0.f, 0.f});
 }
+
+void CommandShoot::OnPressed()
+{
+	//	Safety check
+	if(!m_pPlayer)
+		return;
+
+	m_pPlayer->Shoot();
+}

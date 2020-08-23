@@ -3,6 +3,9 @@
 #include "TextureComponent2D.h"
 #include "PhysxComponent.h"
 #include "Scene.h"
+#include "SceneManager.h"
+#include "Bullet.h"
+#include "BulletManager.h"
 
 Player::Player(const b2Vec2& pos)
 	:Object()
@@ -36,6 +39,11 @@ void Player::Init(Scene* scene)
 	physx->AddFixture(fixtureDef);
 	
 	AddComponent(physx);
+}
+
+void Player::Shoot() const
+{
+	m_pBulletManager->AddBullet(m_Transform.GetPosition(), m_Rotation);
 }
 
 b2Vec2 Player::GetDigPoint() const

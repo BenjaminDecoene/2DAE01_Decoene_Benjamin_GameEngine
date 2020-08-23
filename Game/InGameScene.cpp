@@ -23,7 +23,8 @@ InGameScene::InGameScene(const std::string& name)
 	InputManager::GetInstance().BindCommand(ControllerButton::KeyD, std::make_unique<CommandMoveRight>(m_pPlayer));
 	InputManager::GetInstance().BindCommand(ControllerButton::KeyW, std::make_unique<CommandMoveUp>(m_pPlayer));
 	InputManager::GetInstance().BindCommand(ControllerButton::KeyS, std::make_unique<CommandMoveDown>(m_pPlayer));
-
+	InputManager::GetInstance().BindCommand(ControllerButton::Key_Space, std::make_unique<CommandShoot>(m_pPlayer));
+	
 	Add(m_pPlayer);
 	m_pPlayer->Init(this);
 
@@ -33,6 +34,10 @@ InGameScene::InGameScene(const std::string& name)
 	m_pScoreText->SetPosition(50.f, 0.f);
 
 	Add(m_pScoreText);
+
+	//	BulletManager
+	m_BulletManager.SetMap(m_pMap);
+	m_pPlayer->SetBulletManager(&m_BulletManager);
 }
 
 void InGameScene::Update()
@@ -40,4 +45,6 @@ void InGameScene::Update()
 	Scene::Update();
 
 	m_pScoreText->SetText(std::to_string(GameStats::GetInstance().GetScore()));
+
+	m_BulletManager.Update();
 }

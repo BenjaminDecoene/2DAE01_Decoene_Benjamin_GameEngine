@@ -14,6 +14,7 @@ public:
 	void InitBorder(Scene* scene);
 	//	Getters setters
 	void AddTiles(Scene* scene);
+	Tile* GetTile(const b2Vec2& pos);
 private:
 	void Update() override;
 	void UpdatePlayer();
@@ -21,7 +22,7 @@ private:
 
 	static const UINT m_TileSize = 40;
 	static const UINT m_nrTileColumns = 20;
-	static const UINT m_nrTileRows = 18;
+	static const UINT m_nrTileRows = 17;
 	Tile* m_Tiles[m_nrTileColumns][m_nrTileRows];
 	Player* m_Player;
 };

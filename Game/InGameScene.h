@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "BulletManager.h"
 
 class Player;
 class Map;
@@ -16,4 +17,5 @@ private:
 	Player* m_pPlayer;
 	Map* m_pMap;
 	TextObject* m_pScoreText;
+	BulletManager m_BulletManager;
 };

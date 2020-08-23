@@ -156,6 +156,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="Digger.cpp" />
     <ClCompile Include="GameStats.cpp" />
@@ -171,6 +173,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="Digger.h" />
     <ClInclude Include="GameStats.h" />

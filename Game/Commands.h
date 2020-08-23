@@ -42,3 +42,12 @@ private:
 	void OnPressed() override;
 	void Released() override;
 };
+
+class CommandShoot : public Command
+{
+public:
+	CommandShoot(Player* player) : m_pPlayer(player){}
+private:
+	Player* m_pPlayer;
+	void OnPressed() override;
+};

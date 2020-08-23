@@ -53,7 +53,7 @@ void Map::InitBorder(Scene* scene)
 	physxComp->AddFixture(fixtureDefLeft);
 
 	b2PolygonShape boxShapeDown;
-	boxShapeDown.SetAsBox((windowSize.x / ppm) / 2, (50  / ppm) / 2, {(-windowSize.x / 2) / ppm, ((-windowSize.y - 25.f) / ppm)}, 0.f);
+	boxShapeDown.SetAsBox((windowSize.x / ppm) / 2, (50  / ppm) / 2, {(-windowSize.x / 2) / ppm, ((-windowSize.y / 2 - 25.f) / ppm)}, 0.f);
 	const auto fixtureDefDown = new b2FixtureDef();
 	fixtureDefDown->shape = &boxShapeDown;
 	fixtureDefDown->density = 1.0f;
@@ -71,7 +71,7 @@ void Map::InitBorder(Scene* scene)
 	physxComp->AddFixture(fixtureDefRight);
 
 	b2PolygonShape boxShapeUp;
-	boxShapeUp.SetAsBox((windowSize.x / ppm) / 2, (50  / ppm) / 2, {(-windowSize.x / 2) / ppm, ((windowSize.y / 2 + 25.f) / ppm)}, 0.f);
+	boxShapeUp.SetAsBox((windowSize.x / ppm) / 2, (50  / ppm) / 2, {(-windowSize.x / 2) / ppm, ((windowSize.y / 2 + 25.f - 40.f) / ppm)}, 0.f);
 	const auto fixtureDefUp = new b2FixtureDef();
 	fixtureDefUp->shape = &boxShapeUp;
 	fixtureDefUp->density = 1.0f;
@@ -90,9 +90,13 @@ void Map::AddTiles(Scene* scene)
 		{
 			if(m_Tiles[c][r])
 				scene->Add(m_Tiles[c][r]);
-			m_Tiles[c][r]->Break();
 		}
 	}
+}
+
+Tile* Map::GetTile(const b2Vec2& pos)
+{
+	return m_Tiles[int(pos.x) / m_TileSize][int(pos.y) / m_TileSize];
 }
 
 void Map::LoadTiles()
