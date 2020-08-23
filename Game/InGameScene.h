@@ -11,7 +11,8 @@ class InGameScene : public Scene
 public:
 	InGameScene(const std::string& name);
 	~InGameScene() = default;
-
+	
+	void Init() override;
 	void Update() override;
 private:
 	Player* m_pPlayer;

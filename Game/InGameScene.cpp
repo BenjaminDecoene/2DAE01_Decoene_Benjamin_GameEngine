@@ -7,26 +7,34 @@
 #include "ResourceManager.h"
 #include "TextObject.h"
 #include "GameStats.h"
+#include "Enemy.h"
 
 InGameScene::InGameScene(const std::string& name)
 	:Scene(name)
-	,m_pPlayer(new Player({100.f, 100.f}))
-	,m_pMap(new Map(m_pPlayer))
+	,m_pPlayer(nullptr)
+	,m_pMap(nullptr)
+	,m_pScoreText()
 {
-	//	Add the map
-	Add(m_pMap);
-	m_pMap->AddTiles(this);
-	m_pMap->InitBorder(this);
+}
+
+void InGameScene::Init()
+{
 	
-	//	Bind commands for the player
-	InputManager::GetInstance().BindCommand(ControllerButton::keyA, std::make_unique<CommandMoveLeft>(m_pPlayer));
-	InputManager::GetInstance().BindCommand(ControllerButton::KeyD, std::make_unique<CommandMoveRight>(m_pPlayer));
-	InputManager::GetInstance().BindCommand(ControllerButton::KeyW, std::make_unique<CommandMoveUp>(m_pPlayer));
-	InputManager::GetInstance().BindCommand(ControllerButton::KeyS, std::make_unique<CommandMoveDown>(m_pPlayer));
-	InputManager::GetInstance().BindCommand(ControllerButton::Key_Space, std::make_unique<CommandShoot>(m_pPlayer));
+	//	Player
+	m_pPlayer = new Player({100.f, 100.f});
+		//	Bind commands for the player
+		InputManager::GetInstance().BindCommand(ControllerButton::keyA, std::make_unique<CommandMoveLeft>(m_pPlayer));
+		InputManager::GetInstance().BindCommand(ControllerButton::KeyD, std::make_unique<CommandMoveRight>(m_pPlayer));
+		InputManager::GetInstance().BindCommand(ControllerButton::KeyW, std::make_unique<CommandMoveUp>(m_pPlayer));
+		InputManager::GetInstance().BindCommand(ControllerButton::KeyS, std::make_unique<CommandMoveDown>(m_pPlayer));
+		InputManager::GetInstance().BindCommand(ControllerButton::Key_Space, std::make_unique<CommandShoot>(m_pPlayer));
 	
-	Add(m_pPlayer);
-	m_pPlayer->Init(this);
+	//	Map
+	m_pMap = new Map(m_pPlayer);
+		//	Add the map
+		Add(m_pMap);
+		//	Add the player after the map so its drawn in front of the tiles
+		Add(m_pPlayer);
 
 	//	Score
 	const auto scoreFont = ResourceManager::GetInstance().LoadFont("Font/OrangeJuice.ttf", 50);
@@ -38,6 +46,9 @@ InGameScene::InGameScene(const std::string& name)
 	//	BulletManager
 	m_BulletManager.SetMap(m_pMap);
 	m_pPlayer->SetBulletManager(&m_BulletManager);
+
+	//	Enemies
+	Add(new Enemy(m_pMap, {500.f, 500.f}));
 }
 
 void InGameScene::Update()

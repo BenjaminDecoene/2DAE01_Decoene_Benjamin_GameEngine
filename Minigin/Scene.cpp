@@ -33,7 +33,6 @@ void Scene::Update()
 	{
 		m_Objects[i]->Update();
 	}
-	
 }
 
 void Scene::Render(float interpolation) const

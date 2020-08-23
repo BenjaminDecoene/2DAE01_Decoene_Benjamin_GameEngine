@@ -10,6 +10,7 @@ public:
 	void Add(SceneObject* object);
 	void Remove(SceneObject* object);
 
+	virtual void Init(){};
 	virtual void Update();
 	void Render(float interpolation) const;
 	std::string GetName() const { return m_Name; }

@@ -11,14 +11,15 @@ public:
 	Map(Player* player);
 	~Map();
 
-	void InitBorder(Scene* scene);
 	//	Getters setters
-	void AddTiles(Scene* scene);
 	Tile* GetTile(const b2Vec2& pos);
+	static UINT GetTileSize() { return m_TileSize; }
 private:
 	void Update() override;
 	void UpdatePlayer();
+	void InitBorder();
 	void LoadTiles();
+	void AddTiles();
 
 	static const UINT m_TileSize = 40;
 	static const UINT m_nrTileColumns = 20;

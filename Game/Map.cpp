@@ -13,7 +13,8 @@ Map::Map(Player* player)
 	:m_Player(player)
 {
 	LoadTiles();
-
+	AddTiles();
+	InitBorder();
 	AddObserver(&GameStats::GetInstance());
 }
 
@@ -29,7 +30,7 @@ Map::~Map()
 	}
 }
 
-void Map::InitBorder(Scene* scene)
+void Map::InitBorder()
 {	
 	//	make border so the player cant go outside of the level
 	const auto windowSize = GameInfo::GetInstance().GetWindowSize();
@@ -40,7 +41,7 @@ void Map::InitBorder(Scene* scene)
 	bodyDef->type = b2_staticBody;
 	bodyDef->position = {(windowSize.x / 2), 0.f};
 	
-	auto physxComp = new PhysxComponent(this, scene->GetWorld(), bodyDef);
+	auto physxComp = new PhysxComponent(this, SceneManager::GetInstance().GetScene().GetWorld(), bodyDef);
 	physxComp->FixedToParent(false);
 	
 	b2PolygonShape boxShapeLeft;
@@ -82,20 +83,32 @@ void Map::InitBorder(Scene* scene)
 	AddComponent(physxComp);
 }
 
-void Map::AddTiles(Scene* scene)
+void Map::AddTiles()
 {
+	auto& scene = SceneManager::GetInstance().GetScene();
+	
 	for(int r{}; r < m_nrTileRows; r++)
 	{
 		for(int c{}; c < m_nrTileColumns; c++)
 		{
 			if(m_Tiles[c][r])
-				scene->Add(m_Tiles[c][r]);
+				scene.Add(m_Tiles[c][r]);
 		}
 	}
 }
 
 Tile* Map::GetTile(const b2Vec2& pos)
 {
+	const UINT column = int(pos.x) / m_TileSize;
+	const UINT row = int(pos.y) / m_TileSize;
+
+	//	safety checks
+	if(column >= m_nrTileColumns || column < 0)
+		return nullptr;
+
+	if(row >= m_nrTileRows || row < 0)
+		return nullptr;
+	
 	return m_Tiles[int(pos.x) / m_TileSize][int(pos.y) / m_TileSize];
 }
 
@@ -108,9 +121,9 @@ void Map::LoadTiles()
 			const auto random = rand() % 3;
 
 			if(random == 0)
-				m_Tiles[c][r] = new Tile({(m_TileSize / 2.f) + (c * m_TileSize), (m_TileSize / 2.f) + (r * m_TileSize)}, emerald);
+				m_Tiles[c][r] = new Tile({(m_TileSize / 2.f) + (c * m_TileSize), (m_TileSize / 2.f) + (r * m_TileSize)}, TileState::emerald);
 			else
-				m_Tiles[c][r] = new Tile({(m_TileSize / 2.f) + (c * m_TileSize), (m_TileSize / 2.f) + (r * m_TileSize)}, dirt);
+				m_Tiles[c][r] = new Tile({(m_TileSize / 2.f) + (c * m_TileSize), (m_TileSize / 2.f) + (r * m_TileSize)}, TileState::dirt);
 		}
 	}
 }
@@ -129,13 +142,13 @@ void Map::UpdatePlayer()
 	
 	switch(diggerTile->Break())
 	{
-	case emerald:
+	case TileState::emerald:
 		Notify(*this, "Emerald");
 		break;
-	case dirt:
+	case TileState::dirt:
 		Notify(*this, "Dirt");
 		break;
-	case broken:
+	case TileState::broken:
 		break;
 	}
 }

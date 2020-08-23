@@ -2,7 +2,7 @@
 #include "Tile.h"
 #include "TextureComponent2D.h"
 
-Tile::Tile(const b2Vec2& pos, State state)
+Tile::Tile(const b2Vec2& pos, TileState state)
 	:Object()
 	,m_State(state)
 {
@@ -10,33 +10,33 @@ Tile::Tile(const b2Vec2& pos, State state)
 
 	switch(m_State)
 	{
-	case dirt:
+	case TileState::dirt:
 		AddComponent(new TextureComponent2D(this, "Dirt.jpg", {40, 40}));
 		break;
-	case emerald:
+	case TileState::emerald:
 		AddComponent(new TextureComponent2D(this, "Emerald.png", {40, 40}));
 		break;
-	case broken:
+	case TileState::broken:
 		break;
 	}
 }
 
-State Tile::Break()
+TileState Tile::Break()
 {
 	//	returns true if you broke an emerald
 	switch(m_State)
 	{
-	case dirt:
-		m_State = broken;
+	case TileState::dirt:
+		m_State = TileState::broken;
 		RemoveComponent(GetComponent<TextureComponent2D>());
-		return dirt;
-	case emerald:
-		m_State = broken;
+		return TileState::dirt;
+	case TileState::emerald:
+		m_State = TileState::broken;
 		RemoveComponent(GetComponent<TextureComponent2D>());
-		return emerald;
-	case broken:
-		return broken;
+		return TileState::emerald;
+	case TileState::broken:
+		return TileState::broken;
 	}
 
-	return broken;
+	return TileState::broken;
 }

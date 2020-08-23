@@ -23,6 +23,7 @@ Scene& SceneManager::CreateScene(const std::string& name)
 void SceneManager::AddScene(Scene* scene)
 {
 	m_Scenes.push_back(scene);
+	scene->Init();
 }
 
 Scene& SceneManager::GetScene()

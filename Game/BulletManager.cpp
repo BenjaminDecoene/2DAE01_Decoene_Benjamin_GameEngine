@@ -26,7 +26,7 @@ void BulletManager::Update()
 	for(std::vector<Bullet*>::iterator it{m_Bullets.begin()}; it != m_Bullets.end();)
 	{
 		//	Remove bullet if it hits a wall
-		if(m_pMap->GetTile((*it)->GetTransform().GetPosition())->GetState() != broken)
+		if(m_pMap->GetTile((*it)->GetTransform().GetPosition())->GetState() != TileState::broken)
 		{
 			SceneManager::GetInstance().GetScene().Remove((*it));
 			it = m_Bullets.erase(it);

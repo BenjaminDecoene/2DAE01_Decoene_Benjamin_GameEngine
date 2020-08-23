@@ -10,7 +10,6 @@ public:
 	Player(const b2Vec2& pos);
 	~Player() = default;
 
-	void Init(Scene* scene);
 	void SetBulletManager(BulletManager* manager) { m_pBulletManager = manager; }
 	void Shoot() const;
 	//	Getters setters

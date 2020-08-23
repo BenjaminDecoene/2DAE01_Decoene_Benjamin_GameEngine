@@ -11,14 +11,12 @@ Player::Player(const b2Vec2& pos)
 	:Object()
 	,m_Velocity({{0.f, 0.f}, 2.f})
 	,m_DigOffset(10.f)
+	,m_pBulletManager(nullptr)
 {
 	m_Transform.SetPosition(pos);
 
 	AddComponent(new TextureComponent2D(this, "Digger.png", {40, 40}));
-}
 
-void Player::Init(Scene* scene)
-{
 	//	make physx component
 	const float ppm = GameInfo::GetInstance().GetPPM();
 	//	make the body
@@ -26,7 +24,7 @@ void Player::Init(Scene* scene)
 	bodyDef->type = b2_dynamicBody;
 	bodyDef->gravityScale = 0;
 
-	auto physx = new PhysxComponent(this, scene->GetWorld(), bodyDef);
+	auto physx = new PhysxComponent(this, SceneManager::GetInstance().GetScene().GetWorld(), bodyDef);
 
 	b2PolygonShape boxShape;
 	boxShape.SetAsBox((20 / ppm), (20  / ppm));
