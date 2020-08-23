@@ -1,16 +1,18 @@
 #pragma once
 #include "Scene.h"
 #include "BulletManager.h"
+#include "EnemyManager.h"
 
 class Player;
 class Map;
 class TextObject;
+class ContactListener;
 
 class InGameScene : public Scene
 {
 public:
 	InGameScene(const std::string& name);
-	~InGameScene() = default;
+	~InGameScene();
 	
 	void Init() override;
 	void Update() override;
@@ -19,4 +21,6 @@ private:
 	Map* m_pMap;
 	TextObject* m_pScoreText;
 	BulletManager m_BulletManager;
+	EnemyManager m_EnemyManager;
+	ContactListener* m_pContactListener;
 };

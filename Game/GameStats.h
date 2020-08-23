@@ -12,6 +12,6 @@ private:
 	GameStats() = default;
 	
 	UINT m_Score = 0;
-
+	UINT m_Lives = 3;
 	UINT m_EmStreak = 0;
 };

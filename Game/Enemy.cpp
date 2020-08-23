@@ -6,6 +6,7 @@
 #include "Scene.h"
 #include "Tile.h"
 #include "Map.h"
+#include "GameStats.h"
 
 Enemy::Enemy(Map* map, const b2Vec2& pos)
 	:Object()
@@ -14,6 +15,9 @@ Enemy::Enemy(Map* map, const b2Vec2& pos)
 	,m_Target()
 {
 	m_Transform.SetPosition(pos);
+
+	//	add observer
+	AddObserver(&GameStats::GetInstance());
 
 	//	add components
 		//	Texture
@@ -46,6 +50,10 @@ Enemy::Enemy(Map* map, const b2Vec2& pos)
 	InitStateMachine();
 }
 
+Enemy::~Enemy()
+{
+}
+
 void Enemy::Update()
 {
 	Object::Update();
@@ -66,14 +74,18 @@ bool Enemy::UpdateTarget()
 	tiles.reserve(4);
 
 	//	check all the possible tiles for a broken tile
-	if(leftTile->GetState() == TileState::broken)
-		tiles.emplace_back(leftTile);
-	if(rightTile->GetState() == TileState::broken)
-		tiles.emplace_back(rightTile);
-	if(upTile->GetState() == TileState::broken)
-		tiles.emplace_back(upTile);
-	if(downTile->GetState() == TileState::broken)
-		tiles.emplace_back(downTile);
+	if(leftTile)
+		if(leftTile->GetState() == TileState::broken)
+			tiles.emplace_back(leftTile);
+	if(rightTile)
+		if(rightTile->GetState() == TileState::broken)
+			tiles.emplace_back(rightTile);
+	if(upTile)
+		if(upTile->GetState() == TileState::broken)
+			tiles.emplace_back(upTile);
+	if(downTile)	
+		if(downTile->GetState() == TileState::broken)
+			tiles.emplace_back(downTile);
 
 	//	if there are no tiles available, dont update the target
 	if(tiles.empty())
@@ -107,6 +119,15 @@ bool Enemy::UpdateMoveToTarget()
 
 	//	check if close enough
 	return distToTarget < 2.f;
+}
+
+void Enemy::Kill()
+{
+	if(!m_IsDead)
+	{
+		m_IsDead = true;
+		Notify(*this, "EnemyKilled");		
+	}
 }
 
 void Enemy::InitStateMachine()

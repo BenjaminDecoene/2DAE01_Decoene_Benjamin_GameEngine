@@ -159,8 +159,10 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="Commands.cpp" />
+    <ClCompile Include="ContactListener.cpp" />
     <ClCompile Include="Digger.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="GameStats.cpp" />
     <ClCompile Include="InGameScene.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -177,8 +179,10 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="Commands.h" />
+    <ClInclude Include="ContactListener.h" />
     <ClInclude Include="Digger.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="GameStats.h" />
     <ClInclude Include="InGameScene.h" />
     <ClInclude Include="Map.h" />

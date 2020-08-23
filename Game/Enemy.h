@@ -10,10 +10,14 @@ class Enemy : public Object
 {
 public:
 	Enemy(Map* map, const b2Vec2& pos);
+	~Enemy();
 
 	void Update() override;
 	bool UpdateTarget();
 	bool UpdateMoveToTarget();
+
+	void Kill();
+	bool GetIsDead() const { return m_IsDead; }
 private:
 	void InitStateMachine();
 	
@@ -21,6 +25,7 @@ private:
 	Tile* m_LastTile;
 	b2Vec2 m_Target;
 	StateMachine m_StateMachine;
+	bool m_IsDead = false;
 };
 
 class SeekTarget : public State

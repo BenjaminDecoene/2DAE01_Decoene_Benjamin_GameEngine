@@ -8,6 +8,7 @@ Object::~Object()
 	for (std::vector<Component*>::iterator it{ m_pComponents.begin() }; it != m_pComponents.end(); ++it)
 	{
 		delete (*it);
+		(*it) = nullptr;
 	}
 	m_pComponents.clear();
 };

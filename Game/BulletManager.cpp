@@ -31,6 +31,12 @@ void BulletManager::Update()
 			SceneManager::GetInstance().GetScene().Remove((*it));
 			it = m_Bullets.erase(it);
 		}
+		//	Remove bullet if it hit something else
+		else if((*it)->GetIsHit())
+		{
+			SceneManager::GetInstance().GetScene().Remove((*it));
+			it = m_Bullets.erase(it);			
+		}
 		else
 			++it;
 	}

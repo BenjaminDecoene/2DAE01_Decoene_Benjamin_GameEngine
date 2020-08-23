@@ -18,4 +18,8 @@ void GameStats::Notify(const Object&, const std::string& event)
 	{
 		m_EmStreak = 0;
 	}
+	else if(event == "EnemyKilled")
+	{
+		m_Score += 250;		
+	}
 }

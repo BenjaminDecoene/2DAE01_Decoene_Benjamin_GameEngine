@@ -10,7 +10,7 @@ Bullet::Bullet(const b2Vec2& pos, float direction)
 	,m_Vel({float(cos(direction * M_PI / 180)), -float(sin(direction * M_PI / 180))})
 	,m_Speed{3}
 {
-	m_Transform.SetPosition(pos + 20 * m_Vel);
+	m_Transform.SetPosition(pos + 30 * m_Vel);
 	//	Add texture
 	AddComponent(new TextureComponent2D(this, "Bullet.png",{20, 20}));
 

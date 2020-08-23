@@ -3,6 +3,8 @@
 #include "Renderer.h"
 #include "Object.h"
 #include "Utils.h"
+#include "SceneManager.h"
+#include "Scene.h"
 
 PhysxComponent::PhysxComponent(Object* parent, b2World* world, b2BodyDef* body)
 	:Component(parent)
@@ -13,6 +15,12 @@ PhysxComponent::PhysxComponent(Object* parent, b2World* world, b2BodyDef* body)
 	const auto parentPos = parent->GetTransform().GetPosition();
 	body->position.Set((parentPos.x + body->position.x) / ppm, (parentPos.y + body->position.y) / ppm);
 	m_Body = world->CreateBody(body);
+	m_Body->SetUserData(m_pParent);
+}
+
+PhysxComponent::~PhysxComponent()
+{
+	SceneManager::GetInstance().GetScene().GetWorld()->DestroyBody(m_Body);
 }
 
 void PhysxComponent::Update()

@@ -11,6 +11,7 @@ class PhysxComponent : public Component
 {
 public:
 	PhysxComponent(Object* parent, b2World* world, b2BodyDef* body);
+	~PhysxComponent();
 	void Update() override;
 	void Render(float interpolation) const override;
 	

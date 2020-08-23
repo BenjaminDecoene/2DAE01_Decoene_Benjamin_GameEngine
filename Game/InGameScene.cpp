@@ -8,17 +8,27 @@
 #include "TextObject.h"
 #include "GameStats.h"
 #include "Enemy.h"
+#include "ContactListener.h"
 
 InGameScene::InGameScene(const std::string& name)
 	:Scene(name)
 	,m_pPlayer(nullptr)
 	,m_pMap(nullptr)
 	,m_pScoreText()
+	,m_pContactListener(new ContactListener())
 {
+}
+
+InGameScene::~InGameScene()
+{
+	delete m_pContactListener;
+	m_pContactListener = nullptr;
 }
 
 void InGameScene::Init()
 {
+	//	Add the contactlistener
+	GetWorld()->SetContactListener(m_pContactListener);
 	
 	//	Player
 	m_pPlayer = new Player({100.f, 100.f});
@@ -47,8 +57,9 @@ void InGameScene::Init()
 	m_BulletManager.SetMap(m_pMap);
 	m_pPlayer->SetBulletManager(&m_BulletManager);
 
-	//	Enemies
-	Add(new Enemy(m_pMap, {500.f, 500.f}));
+	//	EnemyManager
+	m_EnemyManager.SetMap(m_pMap);
+	m_EnemyManager.AddEnemy({500.f, 500.f});
 }
 
 void InGameScene::Update()
@@ -58,4 +69,5 @@ void InGameScene::Update()
 	m_pScoreText->SetText(std::to_string(GameStats::GetInstance().GetScore()));
 
 	m_BulletManager.Update();
+	m_EnemyManager.Update();
 }
