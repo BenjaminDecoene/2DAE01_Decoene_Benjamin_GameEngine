@@ -13,6 +13,7 @@ public:
 	void AddLevel(const std::string& path);
 
 	void Update();
+	bool GetIsDone() const { return m_LevelIdx >= m_Levels.size(); }
 private:
 	void AdvanceLevel();
 	

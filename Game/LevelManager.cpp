@@ -39,5 +39,7 @@ void LevelManager::AdvanceLevel()
 {
 	m_LevelIdx++;
 	m_pEnemyManager->Empty();
-	m_Levels[m_LevelIdx]->LoadLevel(m_pMap, m_pPlayer, m_pEnemyManager);
+	//	check if reached end of levels
+	if(m_LevelIdx < m_Levels.size())
+		m_Levels[m_LevelIdx]->LoadLevel(m_pMap, m_pPlayer, m_pEnemyManager);
 }

@@ -12,6 +12,7 @@
 #include "StartScene.h"
 #include <fstream>
 #include <list>
+#include "TextureComponent2D.h"
 
 InGameScene::InGameScene(const std::string& name)
 	:Scene(name)
@@ -56,7 +57,7 @@ void InGameScene::Init()
 	//	Score
 	const auto scoreFont = ResourceManager::GetInstance().LoadFont("Font/OrangeJuice.ttf", 50);
 	m_pScoreText = new TextObject (std::to_string(GameStats::GetInstance().GetScore()), scoreFont);
-	m_pScoreText->SetPosition(50.f, 0.f);
+	m_pScoreText->SetPosition(20.f, 0.f);
 
 	Add(m_pScoreText);
 
@@ -69,23 +70,34 @@ void InGameScene::Init()
 
 	//	Init levelManager
 	m_LevelManager.Init(m_pMap, m_pPlayer, &m_EnemyManager);
+
+	//	Init hearths
+	m_Hearths.resize(GameStats::GetInstance().GetLives());
+	for(size_t i{}; i < m_Hearths.size(); i++)
+	{
+		m_Hearths[i] = new Object();
+		m_Hearths[i]->AddComponent(new TextureComponent2D(m_Hearths[i], "Hearth.png", {40, 40}));
+		m_Hearths[i]->SetPosition(180.f + 40.f * i, GameInfo::GetWindowSize().y - 20.f);
+		Add(m_Hearths[i]);
+	}
 }
 
 void InGameScene::Update()
 {
 	Scene::Update();
 
+	UpdateHearths();
 	m_pScoreText->SetText(std::to_string(GameStats::GetInstance().GetScore()));
 
 	m_LevelManager.Update();
 	m_BulletManager.Update();
 	m_EnemyManager.Update();
-	UpdatePlayerDeath();
+	UpdateGameOver();
 }
 
-void InGameScene::UpdatePlayerDeath()
+void InGameScene::UpdateGameOver()
 {
-	if(GameStats::GetInstance().GetLives() <= 0)
+	if(GameStats::GetInstance().GetLives() <= 0 || m_LevelManager.GetIsDone())
 	{
 		UpdateHighscore();
 		SceneManager::GetInstance().AddScene(new StartScene("StartScene"));
@@ -136,5 +148,15 @@ void InGameScene::UpdateHighscore()
 		{
 			output << std::to_string(*it) << std::endl;
 		}
+	}
+}
+
+void InGameScene::UpdateHearths()
+{
+	if(GameStats::GetInstance().GetLives() < m_Hearths.size())
+	{
+		auto heart = m_Hearths.back();
+		Remove(heart);
+		m_Hearths.erase(m_Hearths.end() - 1);
 	}
 }

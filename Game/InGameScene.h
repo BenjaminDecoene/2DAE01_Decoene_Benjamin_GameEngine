@@ -8,6 +8,7 @@ class Player;
 class Map;
 class TextObject;
 class ContactListener;
+class Object;
 
 class InGameScene : public Scene
 {
@@ -18,8 +19,9 @@ public:
 	void Init() override;
 	void Update() override;
 private:
-	void UpdatePlayerDeath();
+	void UpdateGameOver();
 	void UpdateHighscore();
+	void UpdateHearths();
 	
 	Player* m_pPlayer;
 	Map* m_pMap;
@@ -28,4 +30,5 @@ private:
 	EnemyManager m_EnemyManager;
 	LevelManager m_LevelManager;
 	ContactListener* m_pContactListener;
+	std::vector<Object*> m_Hearths;
 };
