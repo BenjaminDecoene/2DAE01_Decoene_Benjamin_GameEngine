@@ -33,8 +33,8 @@ class SeekTarget : public State
 {
 public:
 	SeekTarget(Enemy* enemy) : m_pEnemy{enemy}{}
-	void Update(StateMachine* stateMachine) override;
 private:
+	void Update(StateMachine* stateMachine) override;
 	Enemy* m_pEnemy;
 };
 
@@ -42,7 +42,11 @@ class MoveToTarget : public State
 {
 public:
 	MoveToTarget(Enemy* enemy) : m_pEnemy{enemy}{}
-	void Update(StateMachine* stateMachine) override;
 private:
-	Enemy* m_pEnemy;	
+	void OnEntry() override;
+	void Update(StateMachine* stateMachine) override;
+	
+	Enemy* m_pEnemy;
+	float m_MaxTime = 0.8f;
+	float m_Timer = 0.f;
 };

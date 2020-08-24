@@ -21,6 +21,7 @@ InGameScene::InGameScene(const std::string& name)
 	,m_pScoreText()
 	,m_pContactListener(new ContactListener())
 	,m_LevelManager()
+	,m_GoldSackManager()
 {
 	m_LevelManager.AddLevel("../Data/Levels/Level1.txt");
 	m_LevelManager.AddLevel("../Data/Levels/Level2.txt");
@@ -68,8 +69,11 @@ void InGameScene::Init()
 	//	EnemyManager
 	m_EnemyManager.SetMap(m_pMap);
 
+	//	Init gold sack manager
+	m_GoldSackManager.SetMap(m_pMap);
+	
 	//	Init levelManager
-	m_LevelManager.Init(m_pMap, m_pPlayer, &m_EnemyManager);
+	m_LevelManager.Init(m_pMap, m_pPlayer, &m_EnemyManager, &m_GoldSackManager);
 
 	//	Init hearths
 	m_Hearths.resize(GameStats::GetInstance().GetLives());
@@ -80,6 +84,7 @@ void InGameScene::Init()
 		m_Hearths[i]->SetPosition(180.f + 40.f * i, GameInfo::GetWindowSize().y - 20.f);
 		Add(m_Hearths[i]);
 	}
+
 }
 
 void InGameScene::Update()
@@ -89,6 +94,7 @@ void InGameScene::Update()
 	UpdateHearths();
 	m_pScoreText->SetText(std::to_string(GameStats::GetInstance().GetScore()));
 
+	m_GoldSackManager.Update();
 	m_LevelManager.Update();
 	m_BulletManager.Update();
 	m_EnemyManager.Update();

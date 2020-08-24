@@ -99,8 +99,8 @@ void Map::AddTiles()
 
 Tile* Map::GetTile(const b2Vec2& pos)
 {
-	const UINT column = int(pos.x) / m_TileSize;
-	const UINT row = int(pos.y) / m_TileSize;
+	const int column = int(pos.x) / m_TileSize;
+	const int row = int(pos.y) / m_TileSize;
 
 	//	safety checks
 	if(column >= m_nrTileColumns || column < 0)

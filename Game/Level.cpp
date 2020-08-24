@@ -6,13 +6,15 @@
 #include "Scene.h"
 #include "Spawner.h"
 #include "EnemyManager.h"
+#include "GoldSackManager.h"
 
 Level::Level(const std::string& path)
 {
+	m_GoldSacks.reserve(20);
 	ReadFile(path);
 }
 
-void Level::LoadLevel(Map* map, Player* player, EnemyManager* enemyManager)
+void Level::LoadLevel(Map* map, Player* player, EnemyManager* enemyManager, GoldSackManager* goldSackManager)
 {
 	//	Set player pos
 	player->SetPosition(m_PlayerPos);
@@ -29,6 +31,11 @@ void Level::LoadLevel(Map* map, Player* player, EnemyManager* enemyManager)
 	for(size_t i{}; i < m_Spawners.size(); i++)
 	{
 		enemyManager->AddSpawner(m_Spawners[i]);
+	}
+	//	Add goldSacks
+	for(size_t i{}; i < m_GoldSacks.size(); i++)
+	{
+		goldSackManager->AddGoldSack(m_GoldSacks[i]);
 	}
 }
 
@@ -87,6 +94,7 @@ void Level::ReadFile(const std::string& path)
 						break;
 					case 'G':
 						m_Tiles[i][m_RowIdx] = TileState::dirt;
+						m_GoldSacks.emplace_back(i * 40.f + 20.f, m_RowIdx * 40.f + 20.f);
 						break;
 					case 'E':
 						m_Tiles[i][m_RowIdx] = TileState::emerald;

@@ -153,8 +153,15 @@ void SeekTarget::Update(StateMachine* stateMachine)
 		stateMachine->TransitionTo(stateMachine->GetState<MoveToTarget>());
 }
 
+void MoveToTarget::OnEntry()
+{
+	m_Timer = 0;
+}
+
 void MoveToTarget::Update(StateMachine* stateMachine)
 {
-	if(m_pEnemy->UpdateMoveToTarget())
+	m_Timer += GameInfo::GetElapsedSec();
+	
+	if(m_pEnemy->UpdateMoveToTarget() || (m_Timer > m_MaxTime))
 		stateMachine->TransitionTo(stateMachine->GetState<SeekTarget>());
 }

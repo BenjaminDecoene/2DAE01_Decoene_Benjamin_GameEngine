@@ -3,6 +3,7 @@
 #include "BulletManager.h"
 #include "EnemyManager.h"
 #include "LevelManager.h"
+#include "GoldSackManager.h"
 
 class Player;
 class Map;
@@ -28,6 +29,7 @@ private:
 	TextObject* m_pScoreText;
 	BulletManager m_BulletManager;
 	EnemyManager m_EnemyManager;
+	GoldSackManager m_GoldSackManager;
 	LevelManager m_LevelManager;
 	ContactListener* m_pContactListener;
 	std::vector<Object*> m_Hearths;

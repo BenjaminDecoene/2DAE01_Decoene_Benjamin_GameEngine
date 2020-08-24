@@ -6,6 +6,7 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Player.h"
+#include "GoldSack.h"
 
 void ContactListener::BeginContact(b2Contact* contact)
 {
@@ -63,6 +64,64 @@ void ContactListener::BeginContact(b2Contact* contact)
 				{
 					player->Kill();
 					enemy->HitPlayer();					
+				}
+			}
+    		//	Check for goldSack hit player
+			{
+				auto goldSack = dynamic_cast<GoldSack*>( objectA );
+				auto player = dynamic_cast<Player*>( objectB );
+				if(player && goldSack)
+				{
+					if(goldSack->IsFalling())
+					{
+						goldSack->Destroy();
+						player->Kill();
+					}
+					else if(goldSack->IsTorn())
+					{
+						goldSack->Destroy();
+						player->Notify(*player, "Gold");
+					}
+				}
+				goldSack = dynamic_cast<GoldSack*>( objectB );
+				player = dynamic_cast<Player*>( objectA );
+				if(player && goldSack)
+				{
+					if(goldSack->IsFalling())
+					{
+						goldSack->Destroy();
+						player->Kill();
+					}
+					else if(goldSack->IsTorn())
+					{
+						goldSack->Destroy();
+						player->Notify(*player, "Gold");
+					}
+				}
+			}
+    		//	Check for goldSack hit enemy
+    		{
+				auto goldSack = dynamic_cast<GoldSack*>( objectA );
+				auto enemy = dynamic_cast<Enemy*>( objectB );
+				if(enemy && goldSack)
+				{
+					if(goldSack->IsFalling())
+						enemy->Kill();
+					else if(goldSack->IsTorn())
+					{
+						goldSack->Destroy();
+					}
+				}
+				goldSack = dynamic_cast<GoldSack*>( objectB );
+				enemy = dynamic_cast<Enemy*>( objectA );
+				if(enemy && goldSack)
+				{
+					if(goldSack->IsFalling())
+						enemy->Kill();
+					else if(goldSack->IsTorn())
+					{
+						goldSack->Destroy();
+					}
 				}
 			}
     	}

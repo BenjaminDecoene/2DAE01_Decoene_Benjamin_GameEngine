@@ -164,6 +164,8 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="GameStats.cpp" />
+    <ClCompile Include="GoldSack.cpp" />
+    <ClCompile Include="GoldSackManager.cpp" />
     <ClCompile Include="InGameScene.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelManager.cpp" />
@@ -188,6 +190,8 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="GameStats.h" />
+    <ClInclude Include="GoldSack.h" />
+    <ClInclude Include="GoldSackManager.h" />
     <ClInclude Include="InGameScene.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelManager.h" />

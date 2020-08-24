@@ -25,7 +25,7 @@ void Renderer::Destroy()
 {
 	if (m_Renderer != nullptr)
 	{
-		//SDL_DestroyRenderer(m_Renderer);
+		SDL_DestroyRenderer(m_Renderer);
 		m_Renderer = nullptr;
 	}
 }

@@ -76,8 +76,11 @@ void EnemyManager::Empty()
 {
 	for(std::vector<Enemy*>::iterator it{m_Enemies.begin()}; it != m_Enemies.end();)
 	{
+		auto enemy = (*it);
 		SceneManager::GetInstance().GetScene().Remove((*it));
-		it = m_Enemies.erase(it);			
+		it = m_Enemies.erase(it);
+		delete enemy;
+		enemy = nullptr;
 	}
 
 	for(std::vector<Spawner*>::iterator it{m_Spawners.begin()}; it != m_Spawners.end();)

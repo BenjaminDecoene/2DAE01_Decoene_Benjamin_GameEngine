@@ -1,6 +1,7 @@
 #pragma once
 #include "Tile.h"
 
+class GoldSackManager;
 class EnemyManager;
 class Player;
 class Map;
@@ -11,7 +12,7 @@ class Level
 public:
 	Level(const std::string& path);
 	
-	void LoadLevel(Map* map, Player* player, EnemyManager* enemyManager);
+	void LoadLevel(Map* map, Player* player, EnemyManager* enemyManager, GoldSackManager* goldSackManager);
 private:
 	void ReadFile(const std::string& path);
 
@@ -21,4 +22,5 @@ private:
 	UINT m_RowIdx = m_nrTileRows - 1;
 	b2Vec2 m_PlayerPos;
 	std::vector<Spawner*> m_Spawners;
+	std::vector<b2Vec2> m_GoldSacks;
 };
