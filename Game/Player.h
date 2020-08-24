@@ -12,7 +12,9 @@ public:
 
 	void SetBulletManager(BulletManager* manager) { m_pBulletManager = manager; }
 	void Shoot() const;
+	void Kill();
 	//	Getters setters
+	void SetPosition(const b2Vec2& pos);
 	void SetVelocity(const b2Vec2& velocity) { m_Velocity.v = velocity; }
 	const b2Vec2& GetVelocity() const { return m_Velocity.v; }
 	b2Vec2 GetDigPoint() const;

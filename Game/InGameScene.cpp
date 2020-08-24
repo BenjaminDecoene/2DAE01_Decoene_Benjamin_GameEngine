@@ -9,6 +9,7 @@
 #include "GameStats.h"
 #include "Enemy.h"
 #include "ContactListener.h"
+#include "Level.h"
 
 InGameScene::InGameScene(const std::string& name)
 	:Scene(name)
@@ -16,7 +17,11 @@ InGameScene::InGameScene(const std::string& name)
 	,m_pMap(nullptr)
 	,m_pScoreText()
 	,m_pContactListener(new ContactListener())
+	,m_LevelManager()
 {
+	m_LevelManager.AddLevel("../Data/Levels/Level1.txt");
+	m_LevelManager.AddLevel("../Data/Levels/Level2.txt");
+	m_LevelManager.AddLevel("../Data/Levels/Level3.txt");
 }
 
 InGameScene::~InGameScene()
@@ -59,7 +64,9 @@ void InGameScene::Init()
 
 	//	EnemyManager
 	m_EnemyManager.SetMap(m_pMap);
-	m_EnemyManager.AddEnemy({500.f, 500.f});
+
+	//	Init levelManager
+	m_LevelManager.Init(m_pMap, m_pPlayer, &m_EnemyManager);
 }
 
 void InGameScene::Update()
@@ -68,6 +75,7 @@ void InGameScene::Update()
 
 	m_pScoreText->SetText(std::to_string(GameStats::GetInstance().GetScore()));
 
+	m_LevelManager.Update();
 	m_BulletManager.Update();
 	m_EnemyManager.Update();
 }

@@ -40,3 +40,20 @@ TileState Tile::Break()
 
 	return TileState::broken;
 }
+
+void Tile::SetState(TileState state)
+{
+	Break();
+	m_State = state;
+	switch(m_State)
+	{
+	case TileState::dirt:
+		AddComponent(new TextureComponent2D(this, "Dirt.jpg", {40, 40}));
+		break;
+	case TileState::emerald:
+		AddComponent(new TextureComponent2D(this, "Emerald.png", {40, 40}));
+		break;
+	case TileState::broken:
+		break;
+	}
+}

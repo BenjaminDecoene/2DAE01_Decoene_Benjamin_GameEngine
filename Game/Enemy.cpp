@@ -39,6 +39,7 @@ Enemy::Enemy(Map* map, const b2Vec2& pos)
 			fixtureDef->density = 1.0f;
 			fixtureDef->friction = 0.7f;
 			fixtureDef->restitution = 0.3f;
+			fixtureDef->filter.groupIndex = -1;
 
 			physx->AddFixture(fixtureDef);
 			

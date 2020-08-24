@@ -23,6 +23,7 @@ public:
 	void SetFixedRotation(bool fixed) const;
 	bool IsTouching() const;
 	void FixedToParent(bool fixed) { m_FixedToParent = fixed; }
+	void SetPosition(const b2Vec2& pos);
 private:
 	b2Body* m_Body = nullptr;
 	std::vector<b2Fixture*> m_Fixtures;

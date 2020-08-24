@@ -16,6 +16,7 @@ public:
 	TileState Break();
 	//	Getters, setters
 	TileState GetState() const { return m_State; }
+	void SetState(TileState state);
 private:
 	TileState m_State;
 };

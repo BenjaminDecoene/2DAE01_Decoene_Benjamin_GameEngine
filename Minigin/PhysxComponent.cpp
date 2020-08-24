@@ -124,3 +124,9 @@ bool PhysxComponent::IsTouching() const
 	}
 	return false;
 }
+
+void PhysxComponent::SetPosition(const b2Vec2& pos)
+{
+	m_Body->SetTransform(1.f / GameInfo::GetPPM() * pos , 0.f);
+	m_Body->SetAwake(true);
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include <Object.h>
 
+enum class TileState;
 class Scene;
 class Tile;
 class Player;
@@ -13,7 +14,9 @@ public:
 
 	//	Getters setters
 	Tile* GetTile(const b2Vec2& pos);
+	Tile* GetTile(UINT col, UINT row) { return m_Tiles[col][row]; }
 	static UINT GetTileSize() { return m_TileSize; }
+	bool GetIsDone();
 private:
 	void Update() override;
 	void UpdatePlayer();

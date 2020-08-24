@@ -6,6 +6,7 @@
 #include "SceneManager.h"
 #include "Bullet.h"
 #include "BulletManager.h"
+#include "GameStats.h"
 
 Player::Player(const b2Vec2& pos)
 	:Object()
@@ -14,6 +15,9 @@ Player::Player(const b2Vec2& pos)
 	,m_pBulletManager(nullptr)
 {
 	m_Transform.SetPosition(pos);
+
+	//	add observer
+	AddObserver(&GameStats::GetInstance());
 
 	AddComponent(new TextureComponent2D(this, "Digger.png", {40, 40}));
 
@@ -42,6 +46,17 @@ Player::Player(const b2Vec2& pos)
 void Player::Shoot() const
 {
 	m_pBulletManager->AddBullet(m_Transform.GetPosition(), m_Rotation);
+}
+
+void Player::Kill()
+{
+	Notify(*this, "PlayerKilled");
+}
+
+void Player::SetPosition(const b2Vec2& pos)
+{
+	m_Transform.SetPosition(pos);
+	GetComponent<PhysxComponent>()->SetPosition(pos);
 }
 
 b2Vec2 Player::GetDigPoint() const

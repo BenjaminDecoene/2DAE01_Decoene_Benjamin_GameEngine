@@ -118,14 +118,22 @@ void Map::LoadTiles()
 	{
 		for(int c{}; c < m_nrTileColumns; c++)
 		{
-			const auto random = rand() % 3;
-
-			if(random == 0)
-				m_Tiles[c][r] = new Tile({(m_TileSize / 2.f) + (c * m_TileSize), (m_TileSize / 2.f) + (r * m_TileSize)}, TileState::emerald);
-			else
-				m_Tiles[c][r] = new Tile({(m_TileSize / 2.f) + (c * m_TileSize), (m_TileSize / 2.f) + (r * m_TileSize)}, TileState::dirt);
+			m_Tiles[c][r] = new Tile({(m_TileSize / 2.f) + (c * m_TileSize), (m_TileSize / 2.f) + (r * m_TileSize)}, TileState::broken);
 		}
 	}
+}
+
+bool Map::GetIsDone()
+{
+	for(int r{}; r < m_nrTileRows; r++)
+	{
+		for(int c{}; c < m_nrTileColumns; c++)
+		{
+			if(m_Tiles[c][r]->GetState() == TileState::emerald)
+				return false;
+		}
+	}
+	return true;
 }
 
 void Map::Update()

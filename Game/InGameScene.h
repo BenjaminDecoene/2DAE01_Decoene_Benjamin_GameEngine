@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "BulletManager.h"
 #include "EnemyManager.h"
+#include "LevelManager.h"
 
 class Player;
 class Map;
@@ -22,5 +23,6 @@ private:
 	TextObject* m_pScoreText;
 	BulletManager m_BulletManager;
 	EnemyManager m_EnemyManager;
+	LevelManager m_LevelManager;
 	ContactListener* m_pContactListener;
 };

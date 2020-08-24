@@ -22,4 +22,8 @@ void GameStats::Notify(const Object&, const std::string& event)
 	{
 		m_Score += 250;		
 	}
+	else if(event == "PlayerKilled")
+	{
+		m_Lives--;
+	}
 }
