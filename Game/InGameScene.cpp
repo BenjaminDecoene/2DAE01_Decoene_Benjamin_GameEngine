@@ -22,6 +22,7 @@ InGameScene::InGameScene(const std::string& name)
 	,m_pContactListener(new ContactListener())
 	,m_LevelManager()
 	,m_GoldSackManager()
+	,m_pBackground(new Object())
 {
 	m_LevelManager.AddLevel("../Data/Levels/Level1.txt");
 	m_LevelManager.AddLevel("../Data/Levels/Level2.txt");
@@ -36,6 +37,12 @@ InGameScene::~InGameScene()
 
 void InGameScene::Init()
 {
+	const auto windowSize = GameInfo::GetWindowSize();
+	//	Background
+	m_pBackground->SetPosition(windowSize.x / 2, windowSize.y / 2);
+	m_pBackground->AddComponent(new TextureComponent2D(m_pBackground, "Background.png", windowSize));
+	Add(m_pBackground);
+	
 	//	Add the contactlistener
 	GetWorld()->SetContactListener(m_pContactListener);
 	

@@ -37,51 +37,53 @@ void PhysxComponent::Update()
 
 void PhysxComponent::Render(float) const
 {
-
-	//	Draw the fixtures
-	
-	auto& renderer = Renderer::GetInstance();
-	const float ppm = GameInfo::GetInstance().GetPPM();
-	b2CircleShape* circleShape{};
-	b2PolygonShape* polygonShape{};
-	b2Vec2 points[8];
-	
-	//	change to red draw color
-	SDL_SetRenderDrawColor(renderer.GetSDLRenderer(), 255, 0, 0, 255);
-	
-	for(size_t i{}; i < m_Fixtures.size(); i++)
+	if(false)
 	{
-		const auto fixtureShape = m_Fixtures[i]->GetShape();
+		//	Draw the fixtures
 		
-		switch (fixtureShape->m_type)
+		auto& renderer = Renderer::GetInstance();
+		const float ppm = GameInfo::GetInstance().GetPPM();
+		b2CircleShape* circleShape{};
+		b2PolygonShape* polygonShape{};
+		b2Vec2 points[8];
+		
+		//	change to red draw color
+		SDL_SetRenderDrawColor(renderer.GetSDLRenderer(), 255, 0, 0, 255);
+		
+		for(size_t i{}; i < m_Fixtures.size(); i++)
 		{
-		case b2Shape::e_circle:
-			circleShape = static_cast<b2CircleShape*>(fixtureShape);
-
-			Utils::DrawCircle(renderer.GetSDLRenderer(),
-				int32_t((circleShape->m_p.x + m_Body->GetPosition().x) * ppm),
-				int32_t(GameInfo::GetWindowSize().y - (circleShape->m_p.y + m_Body->GetPosition().y) * ppm),
-				int32_t(fixtureShape->m_radius * ppm));
-			break;
-		case b2Shape::e_polygon:
-			polygonShape = static_cast<b2PolygonShape*>(fixtureShape);
+			const auto fixtureShape = m_Fixtures[i]->GetShape();
 			
-			//	8 is the max vertices for box2d
-			for(int j{}; j < 8; j++)
+			switch (fixtureShape->m_type)
 			{
-				points[j].x = (polygonShape->m_vertices[j].x + m_Body->GetPosition().x) * ppm;
-				points[j].y = GameInfo::GetWindowSize().y - (polygonShape->m_vertices[j].y + m_Body->GetPosition().y) * ppm;
+			case b2Shape::e_circle:
+				circleShape = static_cast<b2CircleShape*>(fixtureShape);
+
+				Utils::DrawCircle(renderer.GetSDLRenderer(),
+					int32_t((circleShape->m_p.x + m_Body->GetPosition().x) * ppm),
+					int32_t(GameInfo::GetWindowSize().y - (circleShape->m_p.y + m_Body->GetPosition().y) * ppm),
+					int32_t(fixtureShape->m_radius * ppm));
+				break;
+			case b2Shape::e_polygon:
+				polygonShape = static_cast<b2PolygonShape*>(fixtureShape);
+				
+				//	8 is the max vertices for box2d
+				for(int j{}; j < 8; j++)
+				{
+					points[j].x = (polygonShape->m_vertices[j].x + m_Body->GetPosition().x) * ppm;
+					points[j].y = GameInfo::GetWindowSize().y - (polygonShape->m_vertices[j].y + m_Body->GetPosition().y) * ppm;
+				}
+				
+				Utils::DrawClosedPolygon(renderer.GetSDLRenderer(), points, polygonShape->m_count);
+				break;
+			default:
+				break;
 			}
-			
-			Utils::DrawClosedPolygon(renderer.GetSDLRenderer(), points, polygonShape->m_count);
-			break;
-		default:
-			break;
 		}
+		
+		//	change back to black draw color
+		SDL_SetRenderDrawColor(renderer.GetSDLRenderer(), 0, 0, 0, 255);
 	}
-	
-	//	change back to black draw color
-	SDL_SetRenderDrawColor(renderer.GetSDLRenderer(), 0, 0, 0, 255);
 }
 
 void PhysxComponent::AddFixture(b2FixtureDef* fixture)

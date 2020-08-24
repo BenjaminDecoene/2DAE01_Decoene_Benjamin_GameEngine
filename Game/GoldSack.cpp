@@ -41,6 +41,7 @@ GoldSack::GoldSack(Map* map, const b2Vec2& pos)
 		fixtureDef->friction = 0.0f;
 		fixtureDef->restitution = 0.3f;
 		fixtureDef->density = 100.f;
+		fixtureDef->filter.groupIndex = -2;
 
 		physx->AddFixture(fixtureDef);
 			
@@ -69,7 +70,7 @@ void GoldSack::Update()
 bool GoldSack::IsStable() const
 {
 	//	Check if the tile bellow the chest is broken
-	const auto tileUnder = m_pMap->GetTile({m_Transform.GetPosition().x, m_Transform.GetPosition().y - m_pMap->GetTileSize() / 2 - 1});
+	const auto tileUnder = m_pMap->GetTile({m_Transform.GetPosition().x, m_Transform.GetPosition().y - m_pMap->GetTileSize() / 2 - 4});
 
 	if(!tileUnder)
 		return true;

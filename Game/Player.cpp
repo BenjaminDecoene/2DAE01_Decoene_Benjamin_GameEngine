@@ -33,7 +33,7 @@ Player::Player(const b2Vec2& pos)
 	auto physx = new PhysxComponent(this, SceneManager::GetInstance().GetScene().GetWorld(), bodyDef);
 
 	b2PolygonShape boxShape;
-	boxShape.SetAsBox((20 / ppm), (20  / ppm));
+	boxShape.SetAsBox((15 / ppm), (15  / ppm));
 	const auto fixtureDef = new b2FixtureDef();
 	fixtureDef->shape = &boxShape;
 	fixtureDef->density = 1.0f;

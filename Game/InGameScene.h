@@ -33,4 +33,5 @@ private:
 	LevelManager m_LevelManager;
 	ContactListener* m_pContactListener;
 	std::vector<Object*> m_Hearths;
+	Object* m_pBackground;
 };
