@@ -9,8 +9,6 @@ void LevelManager::Init(Map* map, Player* player, EnemyManager* enemyManager)
 	m_pMap = map;
 	m_pPlayer = player;
 	m_pEnemyManager = enemyManager;
-
-	m_Levels[0]->LoadLevel(m_pMap, m_pPlayer, m_pEnemyManager);
 }
 
 void LevelManager::AddLevel(const std::string& path)

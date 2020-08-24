@@ -7,9 +7,11 @@
 #include "ResourceManager.h"
 #include "TextObject.h"
 #include "GameStats.h"
-#include "Enemy.h"
 #include "ContactListener.h"
-#include "Level.h"
+#include "SceneManager.h"
+#include "StartScene.h"
+#include <fstream>
+#include <list>
 
 InGameScene::InGameScene(const std::string& name)
 	:Scene(name)
@@ -78,4 +80,61 @@ void InGameScene::Update()
 	m_LevelManager.Update();
 	m_BulletManager.Update();
 	m_EnemyManager.Update();
+	UpdatePlayerDeath();
+}
+
+void InGameScene::UpdatePlayerDeath()
+{
+	if(GameStats::GetInstance().GetLives() <= 0)
+	{
+		UpdateHighscore();
+		SceneManager::GetInstance().AddScene(new StartScene("StartScene"));
+		SceneManager::GetInstance().SetActiveScene("StartScene");
+		GameStats::GetInstance().GetLives() = 3;
+		GameStats::GetInstance().GetScore() = 0;
+	}
+}
+
+void InGameScene::UpdateHighscore()
+{
+	const UINT nrScores = 5;
+	std::list<UINT> scores{};
+	UINT idx = 0;
+	const auto score = GameStats::GetInstance().GetScore();
+	
+	std::ifstream input{ "../Data/HighScores.txt" };
+	//	check if the stream is succesfull
+	if (input.is_open())
+	{
+		std::string line{};
+		while (std::getline(input, line))
+		{
+			if(line.empty())
+				continue;
+
+			scores.push_back(std::stoi(line));
+			idx++;
+			
+			if(idx >= nrScores)
+				break;
+		}
+		input.close();
+	}
+
+	//	put your own score in the list and sort in decending order
+	scores.push_back(score);
+	scores.sort(std::greater<int>());
+	//	pop the 6th element of the list
+	if(idx >= 5)
+		scores.pop_back();
+
+	//	write the new highscores to the file
+	std::ofstream output{ "../Data/HighScores.txt" };
+	if(output.is_open())
+	{
+		for(std::list<UINT>::const_iterator it{scores.begin()}; it != scores.end(); ++it)
+		{
+			output << std::to_string(*it) << std::endl;
+		}
+	}
 }

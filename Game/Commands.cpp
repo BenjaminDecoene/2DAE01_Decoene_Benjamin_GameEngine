@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Commands.h"
 #include "Player.h"
+#include "SceneManager.h"
+#include "InGameScene.h"
 
 void CommandMoveRight::OnPressed()
 {
@@ -91,6 +93,11 @@ void CommandShoot::OnPressed()
 	//	Safety check
 	if(!m_pPlayer)
 		return;
-
 	m_pPlayer->Shoot();
+}
+
+void CommandStart::OnPressed()
+{
+	SceneManager::GetInstance().AddScene(new InGameScene("InGameScene"));
+	SceneManager::GetInstance().SetActiveScene("InGameScene");
 }

@@ -77,7 +77,6 @@ b2Vec2 Player::GetDigPoint() const
 void Player::Update()
 {
 	Object::Update();
-
 	GetComponent<PhysxComponent>()->SetVelocity(m_Velocity.w * m_Velocity.v);
 	
 	UpdateRotation();

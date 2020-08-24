@@ -4,7 +4,8 @@
 class GameStats : public Observer, public Singleton<GameStats>
 {
 public:
-	UINT GetScore() const { return m_Score; }
+	UINT& GetScore() { return m_Score; }
+	UINT& GetLives() { return m_Lives; }
 	
 	void Notify(const Object& object, const std::string& event) override;
 private:

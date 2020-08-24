@@ -18,6 +18,9 @@ public:
 	void Init() override;
 	void Update() override;
 private:
+	void UpdatePlayerDeath();
+	void UpdateHighscore();
+	
 	Player* m_pPlayer;
 	Map* m_pMap;
 	TextObject* m_pScoreText;

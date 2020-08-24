@@ -51,3 +51,11 @@ private:
 	Player* m_pPlayer;
 	void OnPressed() override;
 };
+
+class CommandStart : public Command
+{
+public:
+	CommandStart() = default;
+private:
+	void OnPressed() override;
+};

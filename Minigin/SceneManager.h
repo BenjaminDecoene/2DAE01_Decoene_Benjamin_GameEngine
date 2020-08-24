@@ -16,6 +16,7 @@ public:
 	void Update();
 	void Render(float interpolation);
 private:
+	void DeleteScene(Scene* scene);
 	friend class Singleton<SceneManager>;
 	SceneManager() = default;
 	std::vector<Scene*> m_Scenes;
