@@ -10,14 +10,6 @@ Subject::Subject()
 
 Subject::~Subject()
 {
-	for(auto i : m_pObservers)
-	{
-		if(i != nullptr)
-		{
-			delete i;
-			i = nullptr;
-		}
-	}
 }
 
 void Subject::AddObserver(Observer* observer)

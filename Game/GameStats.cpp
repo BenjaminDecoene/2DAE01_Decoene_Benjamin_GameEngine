@@ -20,7 +20,7 @@ void GameStats::Notify(const Object&, const std::string& event)
 	}
 	else if(event == "EnemyKilled")
 	{
-		m_Score += 250;		
+		m_Score += 250;
 	}
 	else if(event == "PlayerKilled")
 	{

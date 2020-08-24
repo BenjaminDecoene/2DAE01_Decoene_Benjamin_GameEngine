@@ -28,14 +28,20 @@ void BulletManager::Update()
 		//	Remove bullet if it hits a wall
 		if(m_pMap->GetTile((*it)->GetTransform().GetPosition())->GetState() != TileState::broken)
 		{
+			auto bullet = (*it);
 			SceneManager::GetInstance().GetScene().Remove((*it));
 			it = m_Bullets.erase(it);
+			delete bullet;
+			bullet = nullptr;
 		}
 		//	Remove bullet if it hit something else
 		else if((*it)->GetIsHit())
 		{
+			auto bullet = (*it);
 			SceneManager::GetInstance().GetScene().Remove((*it));
-			it = m_Bullets.erase(it);			
+			it = m_Bullets.erase(it);
+			delete bullet;
+			bullet = nullptr;
 		}
 		else
 			++it;

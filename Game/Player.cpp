@@ -13,6 +13,8 @@ Player::Player(const b2Vec2& pos)
 	,m_Velocity({{0.f, 0.f}, 2.f})
 	,m_DigOffset(10.f)
 	,m_pBulletManager(nullptr)
+	,m_ReloadTime(3.f)
+	,m_ReloadTimeLeft(0.f)
 {
 	m_Transform.SetPosition(pos);
 
@@ -43,9 +45,13 @@ Player::Player(const b2Vec2& pos)
 	AddComponent(physx);
 }
 
-void Player::Shoot() const
+void Player::Shoot()
 {
-	m_pBulletManager->AddBullet(m_Transform.GetPosition(), m_Rotation);
+	if(m_ReloadTimeLeft < 0)
+	{
+		m_pBulletManager->AddBullet(m_Transform.GetPosition(), m_Rotation);
+		m_ReloadTimeLeft = m_ReloadTime;
+	}
 }
 
 void Player::Kill()
@@ -75,6 +81,8 @@ void Player::Update()
 	GetComponent<PhysxComponent>()->SetVelocity(m_Velocity.w * m_Velocity.v);
 	
 	UpdateRotation();
+
+	m_ReloadTimeLeft -= GameInfo::GetElapsedSec();
 }
 
 void Player::UpdateRotation()

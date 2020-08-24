@@ -55,14 +55,14 @@ void ContactListener::BeginContact(b2Contact* contact)
 				if(player && enemy)
 				{
 					player->Kill();
-					enemy->Kill();
+					enemy->HitPlayer();	
 				}
 				player = dynamic_cast<Player*>( objectB );
 				enemy = dynamic_cast<Enemy*>( objectA );
 				if(player && enemy)
 				{
 					player->Kill();
-					enemy->Kill();					
+					enemy->HitPlayer();					
 				}
 			}
     	}

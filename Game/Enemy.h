@@ -17,6 +17,7 @@ public:
 	bool UpdateMoveToTarget();
 
 	void Kill();
+	void HitPlayer();
 	bool GetIsDead() const { return m_IsDead; }
 private:
 	void InitStateMachine();

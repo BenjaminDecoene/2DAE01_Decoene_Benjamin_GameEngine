@@ -11,7 +11,7 @@ public:
 	~Player() = default;
 
 	void SetBulletManager(BulletManager* manager) { m_pBulletManager = manager; }
-	void Shoot() const;
+	void Shoot();
 	void Kill();
 	//	Getters setters
 	void SetPosition(const b2Vec2& pos);
@@ -25,4 +25,6 @@ private:
 	BulletManager* m_pBulletManager;
 	b2Velocity m_Velocity;
 	float m_DigOffset;
+	float m_ReloadTime;
+	float m_ReloadTimeLeft;
 };

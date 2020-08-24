@@ -37,8 +37,11 @@ void EnemyManager::Update()
 	{
 		if((*it)->GetIsDead())
 		{
+			auto enemy = (*it);
 			SceneManager::GetInstance().GetScene().Remove((*it));
-			it = m_Enemies.erase(it);			
+			it = m_Enemies.erase(it);
+			delete enemy;
+			enemy = nullptr;		
 		}
 		else
 			++it;

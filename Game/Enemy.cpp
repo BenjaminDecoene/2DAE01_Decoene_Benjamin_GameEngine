@@ -127,7 +127,15 @@ void Enemy::Kill()
 	if(!m_IsDead)
 	{
 		m_IsDead = true;
-		Notify(*this, "EnemyKilled");		
+		Notify(*this, "EnemyKilled");
+	}
+}
+
+void Enemy::HitPlayer()
+{
+	if(!m_IsDead)
+	{
+		m_IsDead = true;
 	}
 }
 

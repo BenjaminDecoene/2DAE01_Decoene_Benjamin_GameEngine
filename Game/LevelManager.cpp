@@ -40,6 +40,6 @@ void LevelManager::Update()
 void LevelManager::AdvanceLevel()
 {
 	m_LevelIdx++;
-	m_Levels[m_LevelIdx]->LoadLevel(m_pMap, m_pPlayer, m_pEnemyManager);
 	m_pEnemyManager->Empty();
+	m_Levels[m_LevelIdx]->LoadLevel(m_pMap, m_pPlayer, m_pEnemyManager);
 }
